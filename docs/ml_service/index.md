@@ -4,7 +4,7 @@ has_children: true
 layout: default
 nav_order: 5
 ---
-:raised_hands: Woo hoo! I made it!:raised_hands:
+:raised_hands: Woo hoo! I made it! :raised_hands:
 
 Although the spent time for this project alone is around half a year, some components are built more than three years ago.
 It's basically a project combining my academia ML modeling knowledge with the backend and ML Ops skills I acquired 
@@ -31,7 +31,7 @@ more user-friendly interface. I built a crappy frontend interface allowing users
 I still have a lot of items I want to try. The best part as an ML Engineer is that we would need to take care of both backend and
 modeling stuff. I would love to see how I could build a recommendation service with some streaming processing techniques
 and things like feature store. Anyway, let's not stop here. Any comments or feedback are welcome! However, since it's a 
-learning-based project, the reason why a weird component is there would probably be I just want to learn how to use it.:stuck_out_tongue:
+learning-based project, the reason why a weird component is there would probably be I just want to learn how to use it. :stuck_out_tongue:
 
 Keep the ball rolling! 
 

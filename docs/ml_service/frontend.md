@@ -2,7 +2,7 @@
 title: Frontend
 parent: ML Service
 layout: default
-nav order: 60
+nav order: 40
 ---
 
 # Frontend 
