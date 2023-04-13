@@ -24,9 +24,9 @@ The demo code. Something like this.
 This is how we show an example image.
 
 
-![example image](/allyoushawn.github.io/docs/ml_service/images/example_img.jpg)
+![example image](/docs/ml_service/images/example_img.jpg)
 
 
-This is how we show an example image2
+This is how we show an example image2. Changed.
 
-![example image](/allyoushawn.github.io/docs/ml_service/images/example_img2.png)
+![example image](/docs/ml_service/images/example_img2.png)
