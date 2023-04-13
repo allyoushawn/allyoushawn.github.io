@@ -2,7 +2,7 @@
 title: ML Model Service
 parent: ML Service
 layout: default
-nav order: 60
+nav order: 40
 ---
 # ML Model Service
 Introduce the model service. 
