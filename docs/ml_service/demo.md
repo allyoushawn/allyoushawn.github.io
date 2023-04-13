@@ -4,23 +4,37 @@ parent: ML Service
 layout: default
 nav order: 20
 ---
-# What's this about?
+# What's this
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+
+## What's this about?
 It's a project building a machine learning service from scratch.
 
-# A quick demo
+## A quick demo
 
-## section  2
+### section  2
 
 some text
 
-### section 2-1
+#### section 2-1
 some text text
 
-# Another section
+## Another section
 
 The demo code. Something like this.
 
-# Another section
+## Another section
 This is how we show an example image.
 
 
@@ -29,4 +43,4 @@ This is how we show an example image.
 
 This is how we show an example image2. Changed.
 
-![example image](/docs/ml_service/images/example_img2.png)
+![example image2](/docs/ml_service/images/example_img2.png)
