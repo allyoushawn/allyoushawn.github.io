@@ -21,3 +21,5 @@ some text text
 The demo code. Something like this.
 
 # Another section
+This is how we show an example image.
+![example image](/allyoushawn.github.io/docs/ml_service/images/example_img.jpg)
