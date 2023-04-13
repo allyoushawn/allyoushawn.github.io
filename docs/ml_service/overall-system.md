@@ -2,7 +2,7 @@
 title: ML Service Diagram
 parent: ML Service
 layout: default
-nav order: 30
+nav_order: 30
 ---
 # System Diagram
  Show the overall system diagram.
