@@ -6,6 +6,8 @@ nav_order: 5
 ---
 :raised_hands: Woo hoo! I made it! :raised_hands:
 
+I can't believe this documentation takes more time than the project itself lol
+
 Although the spent time for this project alone is around half a year, some components are built more than three years ago.
 It's basically a project combining my academia ML modeling knowledge with the backend and ML Ops skills I acquired 
 from the industry as a ML Engineer. It's an awesome journey so far. :satisfied:
