@@ -43,5 +43,7 @@ Let's try the other service, `machineTranslation`. We could see the translated r
 query to the service.
 
 ![ml_service_click_menu](/docs/ml_service/images/ml_service_click_menu.png)
+
+
 ![ml_service_mt_result](/docs/ml_service/images/ml_service_mt_result.png)
 
