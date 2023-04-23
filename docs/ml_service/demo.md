@@ -33,7 +33,7 @@ In the page, we see the following elements:
 * A service selection menu: Currently we could choose `sentimentAnalysis` and `machineTranslation`.
 
 After we click `Submit`, the service would give users the corresponding results. In this example, the sentiment score
-for the sentence `This is very good.` is `3.0`. (which is ranging from `-5.0` to `5.0`. ) Would talk more about it in 
+for the sentence `This is very good.` is `3.0`. (which is ranging from `-5.0` to `5.0`. ) We will talk more about it in 
 sentiment analysis section.
 
 ![ml_service_sa_result](/docs/ml_service/images/ml_service_sa_result.png)
