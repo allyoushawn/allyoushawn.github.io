@@ -3,7 +3,7 @@ title: Home
 layout: home
 nav_order: 0
 ---
-Welcome to my cave! 
+## Welcome to my cave! 
 
 Here I share my passion for exploring and developing innovative applications of machine learning. 
 As a machine learning enthusiast, 
