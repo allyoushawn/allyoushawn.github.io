@@ -25,32 +25,23 @@ From building backend REST API to frontend interface.
 ## A quick demo
 Hit the endpoint `allyoushawn.hopto.org:8080/ml_service` through a browser, we could start using the ML service.
 
-![example image](/docs/ml_service/images/ml_service_home_page.png)
+![ml_service_home_page](/docs/ml_service/images/ml_service_home_page.png)
+
+In the page, we see the following elements:
+* Id: The task id specified by the user.
+* Message: The input of the ML service. Generally it's a sentence.
+* A service selection menu: Currently we could choose `sentimentAnalysis` and `machineTranslation`.
+
+After we click `Submit`, the service would give users the corresponding results. In this example, the sentiment score
+for the sentence `This is very good.` is `3.0`. (which is ranging from `-5.0` to `5.0`. ) Would talk more about it in 
+sentiment analysis section.
+
+![ml_service_sa_result](/docs/ml_service/images/ml_service_sa_result.png)
 
 
+Let's try the other service, `machineTranslation`. We could see the translated results in Chinese after we submit our
+query to the service.
 
+![ml_service_click_menu](/docs/ml_service/images/ml_service_click_menu.png)
+![ml_service_mt_result](/docs/ml_service/images/ml_service_mt_result.png)
 
-
-
-
-### section  2
-
-some text
-
-#### section 2-1
-some text text
-
-## Another section
-
-The demo code. Something like this.
-
-## Another section
-This is how we show an example image.
-
-
-![example image](/docs/ml_service/images/example_img.jpg)
-
-
-This is how we show an example image2. Changed.
-
-![example image2](/docs/ml_service/images/example_img2.png)
