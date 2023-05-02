@@ -20,7 +20,10 @@ nav_order: 20
 
 ## What's this about?
 It's a project building a machine learning service from scratch. From the model training to its deployment.
-From building backend REST API to frontend interface.
+From building backend REST API to frontend interface. It's plug and play. You could just replace the model while
+leave the ml service untouched to run different ML service.
+
+This project is suitable for people want to have a quick ML service POC for the models they worked on. Enjoy :wine_glass:
 
 ## A quick demo
 Hit the endpoint `allyoushawn.hopto.org:8080/ml_service` through a browser, we could start using the ML service.
