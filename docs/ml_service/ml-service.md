@@ -4,6 +4,18 @@ parent: ML Service
 layout: default
 nav_order: 50
 ---
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 # ML Service
 Refer to the repo README for more information.  [Link](https://github.com/allyoushawn/mlservice)
 

@@ -4,6 +4,18 @@ parent: ML Service
 layout: default
 nav_order: 40
 ---
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 # ML Model Service
 In this document we introduce how the model service works.
 The model service here we refer to a service that feed the query into a ML model and return the model's prediction.
