@@ -27,7 +27,7 @@ Finally, how the model works is defined in the
 
 
 # A standalone NLP service: Sentiment Analysis
-Refer to the repo READMD for more information.  [Link](https://github.com/allyoushawn/ml_model_service/tree/main/sentiment_analysis_model_service)
+Refer to the repo README for more information.  [Link](https://github.com/allyoushawn/ml_model_service/tree/main/sentiment_analysis_model_service)
 
 The sentiment analysis service is a dictionary-based approach. 
 It uses the package `Afinn`[[Repo]](https://github.com/fnielsen/afinn) for sentiment analysis. It does not involved with
@@ -48,7 +48,7 @@ docker container stop sentiment_analysis_model_service_local && docker container
 
 # A GPU-enabled service: Machine Translation
 
-Refer to the repo READMD for more information. [Link](https://github.com/allyoushawn/ml_model_service/tree/main/mt_model_service)
+Refer to the repo README for more information. [Link](https://github.com/allyoushawn/ml_model_service/tree/main/mt_model_service)
 
 If we want to train a deep learning model, we are very likely to use GPU for training and potentially for inference.
 We also play with the GPU for building the ML model service. In this example, we trained a transformer-based 

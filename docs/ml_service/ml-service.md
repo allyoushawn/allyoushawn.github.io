@@ -5,7 +5,7 @@ layout: default
 nav_order: 50
 ---
 # ML Service
-Refer to the repo READMD for more information.  [Link](https://github.com/allyoushawn/mlservice)
+Refer to the repo README for more information.  [Link](https://github.com/allyoushawn/mlservice)
 
 The service serves as an api gateway for ML model services like sentiment analysis and machine translation, etc.
 We implement a REST API gateway with `Java` and `Spring` framework. The gateway would take the query and redirect 
