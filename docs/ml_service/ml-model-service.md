@@ -40,16 +40,6 @@ docker build -t sentiment_analysis_model_service:prod --target prod -f deploymen
 docker run --name sentiment_analysis_model_service_local -it -p 4460:4460 sentiment_analysis_model_service:prod
 ```
 
-An example cURL request to local server would be
-```
-curl -X POST http://127.0.0.1:4460/sentiment_analysis -H 'Content-Type: application/json' -d '{"text":"This is very good."}'
-```
-
-The response would be
-```
-{"request":{"text":"This is very good."},"response":{"word_num":4,"sentiment_score":3.0}}
-```
-
 To stop and remove the container:
 ```
 docker container stop sentiment_analysis_model_service_local && docker container rm sentiment_analysis_model_service_local
@@ -71,16 +61,6 @@ Following the following code to run the service:
 cd /path/to/ml_model_service
 docker build -t mt_model_service:prod --target prod -f deployment/mt_model_service/Dockerfile .
 docker run --name mt_model_service_local -it -p 4461:4461 mt_model_service:prod
-```
-
-An example cURL request to local server would be
-```
-curl -X POST http://127.0.0.1:4461/machine_translation -H 'Content-Type: application/json' -d '{"text":"This is very good."}'
-```
-
-The response would be
-```
-{{"request":{"text":"This is very good."},"response":{"word_num":4,"translated_text":"这是 非常 好 的 。"}}
 ```
 
 To stop and remove the container:
