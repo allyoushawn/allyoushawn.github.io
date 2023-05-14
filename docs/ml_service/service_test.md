@@ -26,4 +26,5 @@ We set up 100 users to query our service and each user would query our service 1
 The following are the test results. 
 
 ![ml_service_sa_test](/docs/ml_service/images/ml_service_sa_result.png)
+
 ![ml_service_mt_test](/docs/ml_service/images/ml_service_mt_result.png)
