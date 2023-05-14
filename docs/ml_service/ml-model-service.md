@@ -88,3 +88,7 @@ docker build -t mt_model_service_gpu:prod --target prod -f deployment/mt_model_s
 docker run --name mt_model_service_gpu_local --gpus all -it -p 4461:4461 mt_model_service_gpu:prod
 docker container stop mt_model_service_gpu_local && docker container rm mt_model_service_gpu_local
 ```
+
+# Next
+The following article would introduce how these model services are called by a gateway service which would be queried by
+users.

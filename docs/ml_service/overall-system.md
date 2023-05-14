@@ -12,5 +12,5 @@ as REST APIs and the modules are communicating with the POST method.
 ![service_diagram](/docs/ml_service/images/service_diagram.png)
 
 
-
+# Next
 We would introduce each component sequentially in the following documents.

@@ -62,3 +62,9 @@ Finally, to stop and remove the container.
 ```
 docker container stop mlservice_local && docker container rm mlservice_local
 ```
+
+
+# Next
+Now we have an endpoint that could be queried by users through command line interface with commands like `curl`.
+To make the interaction more friendly, we are going to 
+build an interface that allow users to interact with our service through a browser.
