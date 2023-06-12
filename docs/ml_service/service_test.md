@@ -22,9 +22,6 @@ the tests we want and see if we need to adjust the setup of our service or impro
 Here is a nice [tutorial](https://www.guru99.com/jmeter-performance-testing.html) 
 to illustrate how to use JMeter to set up the testing.
 
-We set up 100 users to query our service and each user would query our service 10 times.
-The following are the test results. 
-
-![ml_service_sa_test](/docs/ml_service/images/ml_service_sa_result.png)
-
-![ml_service_mt_test](/docs/ml_service/images/ml_service_mt_result.png)
+If we want to test our service, we set up say 100 users to query our service and each user would query our service 10 times.
+We would provide more test results in the future when we have specific requirements for the service and show how our 
+changes in configs give in different results.
