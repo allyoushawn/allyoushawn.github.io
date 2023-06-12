@@ -21,9 +21,9 @@ nav_order: 20
 ## What's this about?
 It's a project building a machine learning service from scratch. From the model training to its deployment.
 From building backend REST API to frontend interface. It's plug and play. You could just replace the model while
-leave the ml service untouched to run different ML service.
+leave the ml service untouched to run different ML services.
 
-This project is suitable for people want to have a quick ML service POC for the models they worked on. Enjoy :wine_glass:
+This project is suitable for people who want to have a quick ML service POC for the models they worked on. Enjoy :wine_glass:
 
 ## A quick demo
 Hit the endpoint `allyoushawn.hopto.org:8080/ml_service` through a browser, we could start using the ML service.
@@ -50,3 +50,6 @@ query to the service.
 
 ![ml_service_mt_result](/docs/ml_service/images/ml_service_mt_result.png)
 
+
+However, just a disclaimer, you would find weird results when you input different sentences since the service is only
+a POC for the serving pipeline. We could spend tons of time tuning the ML models if needed. :stuck_out_tongue:

@@ -18,8 +18,8 @@ nav_order: 40
 
 # ML Model Service
 In this document we introduce how the model service works.
-The model service here we refer to a service that feed the query into a ML model and return the model's prediction.
-This is the [Github Repo](https://github.com/allyoushawn/ml_model_service) that we build for ML model service.
+The model service here refers to a service that feeds the query into a ML model and returns the model's prediction.
+This is the [Github Repo](https://github.com/allyoushawn/ml_model_service) that we built for ML model service.
 
 # Microservice repo architecture
 In the repo, we treat different ML model services as microservices and put them into one repo.
