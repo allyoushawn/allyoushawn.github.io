@@ -53,3 +53,10 @@ query to the service.
 
 However, just a disclaimer, you would find weird results when you input different sentences since the service is only
 a POC for the serving pipeline. We could spend tons of time tuning the ML models if needed. :stuck_out_tongue:
+
+## Repositories included in the projects
+Here is the list of repositories:
+* [ml service backend](https://github.com/allyoushawn/mlservice)
+* [ml model service](https://github.com/allyoushawn/ml_model_service)
+* [ml service frontend](https://github.com/allyoushawn/mlservicefrontend)
+* [Machine Translation with Transformer](https://github.com/allyoushawn/transformer_mt)
