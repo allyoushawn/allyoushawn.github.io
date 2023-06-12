@@ -56,7 +56,7 @@ a POC for the serving pipeline. We could spend tons of time tuning the ML models
 
 ## Repositories included in the projects
 Here is the list of repositories:
-* [ml service backend](https://github.com/allyoushawn/mlservice)
-* [ml model service](https://github.com/allyoushawn/ml_model_service)
-* [ml service frontend](https://github.com/allyoushawn/mlservicefrontend)
+* [ML service backend](https://github.com/allyoushawn/mlservice)
+* [ML model service](https://github.com/allyoushawn/ml_model_service)
+* [ML service frontend](https://github.com/allyoushawn/mlservicefrontend)
 * [Machine Translation with Transformer](https://github.com/allyoushawn/transformer_mt)
