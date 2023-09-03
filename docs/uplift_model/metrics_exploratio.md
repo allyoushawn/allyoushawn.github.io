@@ -31,7 +31,10 @@ Next, we have an uplift model to predict the uplift scores for our users. Here t
 the following equation where `noise` is a scalar controlling the model performance. This assignment seems pretty close
 to the ground truth.
 ```
-score = -| (user_number % converted_parameter) + (random.random() - 0.5) * noise |
+uplift_score = -| (user_number % converted_parameter) + (random.random() - 0.5) * noise |
 ```
 
 ![uplift_model_data_uplift_score_assignment](/docs/uplift_model/images/metrics_exploration/uplift_score_assignment.png)
+
+Finally, to evaluate our models, we would run some metrics like AUC, blablabla@k.
+![uplift_model_metrics_first_glance](/docs/uplift_model/images/metrics_exploration/evaluation_metrics_first_glance.png)
