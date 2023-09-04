@@ -46,7 +46,7 @@ The users (in both control and treatment) would be sorted based on the assigned 
 mean we compare the top 1% of users in treatment and control and compute the uplift. We get uplift at K with the
 following equation:
 
-![uplift_model_metrics_first_glance](/docs/uplift_model/images/metrics_exploration/uplift_at_k_equation.png)
+![uplift_model_uplift_at_k_equation](/docs/uplift_model/images/metrics_exploration/uplift_at_k_equation.png)
 
 The notation in the above equation is following the
 [link.](https://pylift.readthedocs.io/en/latest/introduction.html#the-qini-curve)
@@ -69,3 +69,31 @@ n_t = 10
 n_{c, y = 1} = 2
 n_c = 10
 ```
+
+# Qini Curve
+If we want an overall estimate of the uplift model, one of the most common evaluation metric is through Qini curve.
+With the Qini curve, we plot the uplifts of targeting different number of users and compute the area under curve to get
+the overall evaluation on the model. The below is the notebook's Qini curve.
+
+![uplift_model_Qini_curve_qini_curve](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_curve.png)
+
+There are three curves in the plot: random selection curve (orange), model performance curve (blue) 
+and perfect performance curve (green.) The overall estimate we are looking for is area under Qini curve (AUQC).
+Since it's evaluating the uplift performance, the computed AUQC is computed by
+`AUC(model performance) - AUC(random performance)`.
+One thing to note here is that in the scikit-lift package also considers the AUQC of perfect performance. See how it's
+computed in the
+[AUQC documentation](https://github.com/maks-sh/scikit-uplift/blob/master/notebooks/uplift_metrics_tutorial.ipynb).
+
+Next we are diving into how we obtain the three curves.
+
+## Random Performance
+
+[Source code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/viz/base.py#L186)
+
+From the source code we could see the baseline curve is a straight line. The performance is computed with:
+![uplift_model_random_performance_equation](/docs/uplift_model/images/metrics_exploration/random_performance_equation.png)
+
+The first part of the equation is the overall uplift effects computed by considering all users' conversion behavior.
+In the random scenario, we believed that the uplift is fixed given any set of users, and therefore it is a constant.
+The overall uplift would be the number of targeted users, `n_c + n_t` times the overall uplift effects.
