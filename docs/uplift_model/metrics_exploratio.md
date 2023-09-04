@@ -185,3 +185,8 @@ With this formula for control users, the AUQC is much better which is 0.99.
 
 ![uplift_model_Qini_curve_qini_curve](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_curve_better.png)
 
+# Uplift Curve
+The above is how we plot the Qini curve. Another evaluation is uplift curve, and it is very similar to Qini curve while
+the evaluation is done with the following equation:
+
+![uplift_model_qini_uplift_equation](/docs/uplift_model/images/metrics_exploration/uplift_curve_uplift_equation.png)
