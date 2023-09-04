@@ -121,7 +121,7 @@ we could see that the users are ranked in the following order:
 
 For each targeted user number, the Qini curve is computed with the following equation:
 
-![uplift_model_qini_uplift_equation](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_uplift_equation_equation.png)
+![uplift_model_qini_uplift_equation](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_uplift_equation.png)
 
 It is computed with the following [code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/metrics/metrics.py#L267)
 ```
