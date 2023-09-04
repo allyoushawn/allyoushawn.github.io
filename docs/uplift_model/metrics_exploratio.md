@@ -92,8 +92,59 @@ Next we are diving into how we obtain the three curves.
 [Source code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/viz/base.py#L186)
 
 From the source code we could see the baseline curve is a straight line. The performance is computed with:
-![uplift_model_random_performance_equation](/docs/uplift_model/images/metrics_exploration/random_performance_equation.png)
 
-The first part of the equation is the overall uplift effects computed by considering all users' conversion behavior.
-In the random scenario, we believed that the uplift is fixed given any set of users, and therefore it is a constant.
-The overall uplift would be the number of targeted users, `n_c + n_t` times the overall uplift effects.
+![uplift_model_random_performance_equation](/docs/uplift_model/images/metrics_exploration/Qini_curve_random_performance_equation.png)
+
+`N_{t, y=1}` is the number of users converted in treatment group. The `N_{c, y=1}` is the number of users converted in 
+control group. The uplift is the difference between the two while `N_{c, y=1}` is scaled by the number of users in 
+each group. If the number of users are the same, `N_t/N_c` would be 1. Since it's a random model, it is hypothesized
+that the uplift would be distributed evenly among users, and therefore it is a straight line from from `(0, 0)` to
+the final uplift after targeting all users `(N_t + N_c, N_{t, y=1} - N_{c, y=1} * N_t/N_c )`.
+
+## Perfect Performance
+[Source code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/metrics/metrics.py#L277)
+
+From the source code, we could see that the perfect performance curve is first computing the perfect uplift score 
+given the conversion label and the treatment label (indicating users are in the treatment or control group.) The users
+are ranked by the perfect uplift scores, and we compute the uplift by targeting different number of users.
+
+Here, the number of targeted users is obtained by considering all users instead of each group. That is, the targeted
+users might not contain control or treatment users.
+
+By inspecting the [perfect uplift score computation](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/metrics/metrics.py#L277),
+ `y_true * treatment - y_true * (1 - treatment)`,
+we could see that the users are ranked in the following order:
+
+1. Treatment users with converted label 1
+2. Treatment users with converted label 0 or Control users with converted label 0
+3. Control users with converted label 1
+
+For each targeted user number, the Qini curve is computed with the following equation:
+
+![uplift_model_qini_uplift_equation](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_uplift_equation_equation.png)
+
+It is computed with the following [code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/metrics/metrics.py#L267)
+```
+curve_values = y_trmnt - y_ctrl * np.divide(num_trmnt, num_ctrl, out=np.zeros_like(num_trmnt), where=num_ctrl != 0)
+```
+
+Comparing it with the one used in random performance, we could see that the only difference is the first part now is
+not a constant and is dependent of the assigned uplift score.
+
+Let's deep into what happens in each section of the perfect performance curve.
+
+### Section 1: Treatment users with converted label 1
+
+In the first part of the curve, it consists of treatment users with converted label 1. In the notebook, it is the
+section of the 0 ~ 100 users. Since we don't have any control users, the equation becomes
+`n_{t, y=1}` and it is equivalent to `n_t`. This is the reason why it is a line with slope 1.
+
+### Section 2: Treatment users with converted label 0 or Control users with converted label 0
+
+In this section, the targeted users includes the ones that are not converted, no matter they are in the treatment or
+control group. The equation becomes `N_{t, y=1} - 0 * (n_t/n_c)` and equals to `N_{t, y=1}`. Since now we have included
+all converted users in the treatment group while not include any converted users in the control group, the second part
+of the equation is always 0 and the first part is a constant. That is the reason why the second part is a 
+horizontal line with `y = N_{t, y=1}`.
+
+
