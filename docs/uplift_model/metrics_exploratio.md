@@ -38,3 +38,33 @@ uplift_score = -| (user_number % converted_parameter) + (random.random() - 0.5) 
 
 Finally, to evaluate our models, we would run some metrics like AUC, blablabla@k.
 ![uplift_model_metrics_first_glance](/docs/uplift_model/images/metrics_exploration/evaluation_metrics_first_glance.png)
+
+In the following sections, we would introduce each metric and how they are computed.
+
+# Uplift at K
+The users (in both control and treatment) would be sorted based on the assigned uplift scores. If `K = 0.01`, it would
+mean we compare the top 1% of users in treatment and control and compute the uplift. We get uplift at K with the
+following equation:
+
+![uplift_model_metrics_first_glance](/docs/uplift_model/images/metrics_exploration/uplift_at_k_equation.png)
+The notation in the above equation is following the
+[link.](https://pylift.readthedocs.io/en/latest/introduction.html#the-qini-curve)
+`n_{t, y=1}` means the number of users who are converted in the top 1% treatment cohort and `n_t` is the
+number of users in the top 1% treatment cohort. 
+However, how to select the users
+could be tricky. It could be top 1% users from treatment and control respectively. Or, it could be top 1% of users from
+the all users. If we select top 1% users from treatment and control respectively, `n_t` and `n_c` should be the same if 
+the number of the numbers of all users in treatment and control are similar, which is `N_t = N_c`. On the other hand,
+this might not be true if the top 1% of users are selected from all users. 
+
+By tracing the [source code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/metrics/metrics.py#L474)
+of the scikit-uplift computing the metric, we could see the package provide both of them. If strategy is `overall`, the
+metric is computed with top 1% of users from the all users.
+
+In the notebook, numbers are as follows and therefore the uplift@0.01 is 0.8.
+```
+n_{t, y=1} = 10
+n_t = 10
+n_{c, y = 1} = 2
+n_c = 10
+```
