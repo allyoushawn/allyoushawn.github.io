@@ -47,6 +47,7 @@ mean we compare the top 1% of users in treatment and control and compute the upl
 following equation:
 
 ![uplift_model_metrics_first_glance](/docs/uplift_model/images/metrics_exploration/uplift_at_k_equation.png)
+
 The notation in the above equation is following the
 [link.](https://pylift.readthedocs.io/en/latest/introduction.html#the-qini-curve)
 `n_{t, y=1}` means the number of users who are converted in the top 1% treatment cohort and `n_t` is the
