@@ -5,6 +5,7 @@ parent: Uplift Model
 nav_order: 10
 ---
 Before we jump into how to train uplift models, let's start with understanding the metrics used by these models.
+The package we used for evaluation is [scikit-uplift](https://www.uplift-modeling.com/en/latest/index.html).
 
 [Jupyter Notebook](https://github.com/allyoushawn/algorithms/blob/master/uplift_model/uplift_metric_exploration.ipynb)
 
@@ -98,8 +99,10 @@ From the source code we could see the baseline curve is a straight line. The per
 `N_{t, y=1}` is the number of users converted in treatment group. The `N_{c, y=1}` is the number of users converted in 
 control group. The uplift is the difference between the two while `N_{c, y=1}` is scaled by the number of users in 
 each group. If the number of users are the same, `N_t/N_c` would be 1. Since it's a random model, it is hypothesized
-that the uplift would be distributed evenly among users, and therefore it is a straight line from from `(0, 0)` to
+that the uplift would be distributed evenly among users, and therefore it is a straight line from `(0, 0)` to
 the final uplift after targeting all users `(N_t + N_c, N_{t, y=1} - N_{c, y=1} * N_t/N_c )`.
+
+Note: If there are lots of sleeping dogs, the slope of the line would be negative.
 
 ## Perfect Performance
 [Source code](https://github.com/maks-sh/scikit-uplift/blob/master/sklift/metrics/metrics.py#L277)
@@ -136,15 +139,49 @@ Let's deep into what happens in each section of the perfect performance curve.
 ### Section 1: Treatment users with converted label 1
 
 In the first part of the curve, it consists of treatment users with converted label 1. In the notebook, it is the
-section of the 0 ~ 100 users. Since we don't have any control users, the equation becomes
+section of targeting 0 ~ 100 users. Since we don't have any control users, the equation becomes
 `n_{t, y=1}` and it is equivalent to `n_t`. This is the reason why it is a line with slope 1.
 
 ### Section 2: Treatment users with converted label 0 or Control users with converted label 0
 
 In this section, the targeted users includes the ones that are not converted, no matter they are in the treatment or
-control group. The equation becomes `N_{t, y=1} - 0 * (n_t/n_c)` and equals to `N_{t, y=1}`. Since now we have included
+control group. In the notebook, it is the section of targeting 101 ~ 1939 users.
+The equation becomes `N_{t, y=1} - 0 * (n_t/n_c)` and equals to `N_{t, y=1}`. Since for now we have included
 all converted users in the treatment group while not include any converted users in the control group, the second part
 of the equation is always 0 and the first part is a constant. That is the reason why the second part is a 
 horizontal line with `y = N_{t, y=1}`.
 
+
+### Section 3: Control users with converted label 1
+In this section, the targeted users includes the converted users in the control group. In the notebook, it is the 
+section of targeting 1940 ~ 2000 users. The equation becomes the following:
+
+![uplift_model_Qini_curve_qini_uplift_perfect_performance_section3_equation](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_uplift_perfect_performance_section3_equation.png)
+
+We could see that it is definitely not a straight line since the variable is in the second part's denominator. However,
+the straight line is a loose upper bound and should still be valid. Therefore, the AUQC obtained with 
+the perfect performance should still be valid.
+
+## Model performance
+The Qini curve for the model performance is obtained similarly as the one obtained for the perfect performance with the
+following equation:
+
+![uplift_model_qini_uplift_equation](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_uplift_equation.png)
+
+From the Qini curve below, we could see the AUQC is 0.22. The reason that it is not high is that our uplift scores
+assigned to the control users are putting converted control users at the top of the list. In order to get the best
+uplift, we should put them at the bottom of the list.
+
+![uplift_model_Qini_curve_qini_curve](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_curve.png)
+
+If we add a negative sign to the score assignment of the control users and subtract it by 1000 ( to keep
+it in the same numerical range), we would obtain the formula below.
+
+```
+uplift_score = | (user_number % converted_parameter) + (random.random() - 0.5) * noise | - 1000
+```
+
+With this formula for control users, the AUQC is much better which is 0.99.
+
+![uplift_model_Qini_curve_qini_curve](/docs/uplift_model/images/metrics_exploration/Qini_curve_qini_curve_better.png)
 
