@@ -61,7 +61,7 @@ By tracing the [source code](https://github.com/maks-sh/scikit-uplift/blob/maste
 of the scikit-uplift computing the metric, we could see the package provide both of them. If strategy is `overall`, the
 metric is computed with top 1% of users from the all users.
 
-In the notebook, numbers are as follows and therefore the uplift@0.01 is 0.8.
+In the notebook, we use the `overall` strategy and the numbers are as follows and therefore the uplift@0.01 is 0.8.
 ```
 n_{t, y=1} = 10
 n_t = 10
