@@ -9,9 +9,3 @@ aux_links:
 
 plugins:
   - jemoji
-
-compress_html:
-  blank_lines: false
-
-# LaTeX rendering via "katex" (KaTeX, default) or "mathjax" (MathJax) or "none" / "off" (NO rendering)
-latex: katex
