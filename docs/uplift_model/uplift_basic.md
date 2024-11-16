@@ -5,8 +5,26 @@ parent: Uplift Model
 nav_order: 5
 ---
 
-# (Draft) Uplift basics
+# Uplift Basics
+The core idea behind uplift modeling is modeling conditional average treatment effect (CATE) 
+which could be formulated below
 
+$$ CATE(x) = \mathbb{E}[Y(1) - Y(0)|X=x]$$
+
+where
+- Y(1) is the outcome if the individual receives the treatment
+- Y(0) is the outcome if the individual **not** receives the treatment
+- X = x denotes the covariates of the individual
+
+If we could have a random collection trial setting (RCT), we could formulate CATE as the below
+
+$$CATE(x) = \mathbb{E}[Y|T=1, X=x] - \mathbb{E}[Y|T=0, X=x]$$
+
+
+
+
+
+# Appendix
 $$\sqrt{3x-1}+(1+x)^2$$
 
 **The Cauchy-Schwarz Inequality**
