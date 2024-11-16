@@ -12,7 +12,7 @@ which could be formulated below
 $$ \textrm{CATE}(x) = \mathbb{E}[Y(1) - Y(0)|X=x]$$
 
 where
-- $Y(1)$ is the outcome if the individual receives the treatment
+- $$Y(1)$$ is the outcome if the individual receives the treatment
 - $Y(0)$ is the outcome if the individual **not** receives the treatment
 - $X = x$ denotes the covariates of the individual
 
