@@ -49,8 +49,6 @@ $$x$$ in our dataset is collected randomly and therefore would be general enough
 
 Mathematically, it is called **conditional independence assumption** or **ignorability**. 
 
-$$
-Y(0), Y(1) \perp\!\!\!\perp T | X 
-$$
+$$ Y(0), Y(1) \perp\!\!\!\perp T | X $$
 
 Under this setting, we would have $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
