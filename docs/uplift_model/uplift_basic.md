@@ -60,7 +60,5 @@ Test again $$\mathbb{E}[Y|T=1, X=x]$$.
 
 Test again 2 $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
 
-Some sentence
-
 
 
