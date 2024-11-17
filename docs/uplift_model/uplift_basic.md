@@ -49,12 +49,19 @@ $$x$$ in our dataset is collected randomly and therefore would be general enough
 
 Mathematically, it is called **conditional independence assumption** or **ignorability**. 
 
+$$ Y(0), Y(1) \perp\!\!\!\perp T | X $$
 
 Under this setting, we would have
 
 $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$
 
 However, what should we do if we could not perform random collection trial?
+
+Under this setting, people who see the ad are often systematically different from those who don’t, 
+creating **confounding**. For example, people seeing the ad might intrinsically have higher tendency to purchase.
+The $$\mathbb{E}[Y|T=1, X=x]$$ obtained through the dataset will have **confounding bias** 
+since it's being inflated by the mentioned phenomenon 
+when we compare it to the true value we want $$\mathbb{E}[Y|T=1, X=x]$$.
 
 Test again $$\mathbb{E}[Y|T=1, X=x]$$.
 
