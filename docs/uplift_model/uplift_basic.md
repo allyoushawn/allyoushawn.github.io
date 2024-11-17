@@ -57,3 +57,7 @@ $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$
 
 However, what should we do if we could not perform random collection trial?
 
+Test again $$\mathbb{E}[Y|T=1, X=x]$$.
+
+Test again 2 $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
+
