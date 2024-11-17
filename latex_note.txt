@@ -1,0 +1,29 @@
+The $$latex expression$$ might encounter weird issue if it is put at the first line of a sentence,
+
+See the below example on the github.io rendering to get more understanding
+
+# Example 1, the example that would have issues
+Test again 2 $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
+
+# Example 2, the example that resolve issues
+Test again 2
+$$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
+
+# Other examples below during testing just for archive purpose
+# Example
+Under this setting, people who see the ad are often systematically different from those who don’t,
+creating **confounding**. For example, people seeing the ad might intrinsically have higher tendency to purchase.
+The $$\mathbb{E}[Y|T=1, X=x]$$ obtained through the dataset will have **confounding bias**
+since it's being inflated by the mentioned phenomenon
+when we compare it to the true value we want $$\mathbb{E}[Y|T=1, X=x]$$.
+
+# Example
+Under this setting, people who see the ad are often systematically different from those who don’t,
+creating **confounding**. For example, people seeing the ad might intrinsically have higher tendency to purchase. $$\mathbb{E}[Y|T=1, X=x]$$.
+
+# Example
+Test again 2
+$$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
+
+# Example
+Under this setting, people who see the ad are often systematically different from those who don’t, $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
