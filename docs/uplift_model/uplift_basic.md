@@ -66,8 +66,8 @@ when we compare it to the true value we want $$\mathbb{E}[Y|T=1, X=x]$$.
 Under this setting, people who see the ad are often systematically different from those who don’t, 
 creating **confounding**. For example, people seeing the ad might intrinsically have higher tendency to purchase. $$\mathbb{E}[Y|T=1, X=x]$$.
 
-Under this setting, people who see the ad are often systematically different from those who don’t,
-Test again 2 $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
+Test again 2 
+$$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$.
 
 
 
