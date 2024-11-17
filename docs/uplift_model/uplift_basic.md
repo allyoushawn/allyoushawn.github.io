@@ -55,3 +55,27 @@ Under this setting, we would have
 $$\mathbb{E}[Y(1)|X=x] = \mathbb{E}[Y|T=1, X=x]$$
 
 However, what should we do if we could not perform random collection trial?
+
+
+# Propensity score
+If we could not perform random collection trial, we could leverage propensity scores for us to estimate
+the treatment effects. 
+
+Propensity score is defined as 
+
+$$
+e(X) = P(T=1|X)
+$$
+
+If two users have the same propensity score, it means that they are comparable in terms of the 
+$$X$$. If one of them receives the treatment and the other does not, the difference comes from the treatment
+effect. (Because it's kind of like random collection scenario.)
+
+Therefore, to estimate the treatment effects, we could group by propensity and compute the average treatment together.
+There are many ways to do the estimate. One of them is inverse propensity weighting (IPW)
+
+$$
+w_i = \frac{T_i}{e(X_i)} + \frac{1-T_i}{1-e(X_i)}
+$$
+
+Re-weight individuals to create a "pseudo-population" where the treatment assignment is independent of the covariates.
