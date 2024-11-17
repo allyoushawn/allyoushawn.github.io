@@ -1,4 +1,5 @@
-The $$latex expression$$ might encounter weird issue if it is put at the first line of a sentence,
+The $$latex expression$$ might encounter weird issue if it is put at the first line of a sentence. The below example
+seem to be caused by conflicting with the markdown syntax regarding table representation.
 
 See the below example on the github.io rendering to get more understanding
 
