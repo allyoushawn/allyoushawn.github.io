@@ -4,4 +4,31 @@ layout: default
 nav_order: 10
 ---
 
-It is the content.
+# Text embedding with decoder-based Transformer
+When we want to do text embedding, encoder-based Transformer such as BERT used to be the optimal choice.
+These encoder-based models are trained with bi-directional information which means that the embedding of each token
+considers the information of the whole sentence. On the other hand, the decoder-only models are trained with 
+the causal mask which means that the tokens' embedding only considers the information prior to them which make only the
+embedding of the last token has the information of the whole sentence. Therefore, using encoder-based models make more
+sense for the tasks using sentence text embedding.
+
+However, the decoder-based Transformer is the backbone of the LLM and these LLM models are trained with huge amount of
+data and have shown promising results on various of tasks. Therefore, how to leverage these pre-trained LLM models to
+ generate text embedding has been a new line of works.
+
+Advantages of decoder-based transformer
+- With the recent development of LLM community, we already have many powerful pre-trained models to start with
+- These decoder-based LLMs have been developed to be good at instruction following and therefore could generalize over a variety of tasks with instructions
+- Since encoder-based Transformer rely on masking around 15% of tokens during training while it is not the case for the decoder-based model, given the same training data size the decoder-based model is more efficient to learn all the tokens.
+
+
+On the other hand, the disadvantage of the decoder-based transformer is also obvious which is they rely on causal masking and the masking does not make sense for the text embedding tasks and therefore in this line of papers the authors all removed the constraints.
+
+# LLM2Vec
+
+In the LLM2Vec [paper](https://arxiv.org/pdf/2404.05961), the figure 1 summarizes how they approach the problem.
+
+![llm2vec_figure1](/docs/ml_misc/llm2vec/images/llm2vec_figure1.png)
+
+
+
