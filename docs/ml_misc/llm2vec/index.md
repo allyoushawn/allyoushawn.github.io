@@ -30,5 +30,13 @@ In the LLM2Vec [paper](https://arxiv.org/pdf/2404.05961), the figure 1 summarize
 
 ![llm2vec_figure1](/docs/ml_misc/llm2vec/images/llm2vec_figure1.png)
 
+The very first modification is **enabling the bidirectional attention**. 
+
+(Add some text here...)
+
+
+## Implementation details of bidirectional attention
+From the huggingface repository[McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp), we see that it defines a class `LlamaEncoderModel` [(here)](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp/blob/main/modeling_llama_encoder.py#L54). In this class, every layer now is a `ModifiedLlamaDecoderLayer` which [turned off all the `is_causal` flags](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp/blob/main/modeling_llama_encoder.py#L14-L32).
+
 
 
