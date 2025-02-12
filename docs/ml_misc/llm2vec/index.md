@@ -30,13 +30,22 @@ In the LLM2Vec [paper](https://arxiv.org/pdf/2404.05961), the figure 1 summarize
 
 ![llm2vec_figure1](/docs/ml_misc/llm2vec/images/llm2vec_figure1.png)
 
-The very first modification is **enabling the bidirectional attention**. 
+The very first step is **enabling the bidirectional attention**. In this way the embedding is obtained with all information of the input sentence.
 
-(Add some text here...)
+The second step is training the model with the masked next token prediction to make the model aware of the bidirectional attention enablement. The paper used LoRA to fine tune the base model, and therefore we would have an adapter after the training.
+
+With the above two steps, we should have a model that could leverage the whole sentence information to generate the corresponding token embedding. However, we need the model to give us the sentence/document embedding. Therefore, the third step is using unsupervised contrastive learning via SimCSE to help the model learn the sequence embedding. In the contrastive learning, the dataset is composed as below
+- Positive pair: Send the input text to the model twice and with the dropout mechanism we would have two sequence embedding. They would be positive pairs
+- Negative pair: Sequence embedding from different input pairs
+
+## Pooling
+The paper tried three types of pooling approach: EOS, mean pooling and weighted mean pooling. The authors found that the mean pooling approach worked the best overall. How the pooling approaches are implemented is shown through the code [here](https://github.com/McGill-NLP/llm2vec/blob/main/llm2vec/llm2vec.py#L241-L273). As a side note, the weighted mean pooling here means the tokens in the later part of the sequence would have larger weights.
 
 
 ## Implementation details of bidirectional attention
 From the huggingface repository[McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp), we see that it defines a class `LlamaEncoderModel` [(here)](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp/blob/main/modeling_llama_encoder.py#L54). In this class, every layer now is a `ModifiedLlamaDecoderLayer` which [turned off all the `is_causal` flags](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp/blob/main/modeling_llama_encoder.py#L14-L32).
+
+However, how the code and model are loaded through the huggingface config along with the base model is another topic. 
 
 
 
