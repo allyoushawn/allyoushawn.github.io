@@ -44,7 +44,7 @@ The paper tried three types of pooling approach: EOS, mean pooling and weighted 
 ## LLM2Vec with supervised training
 The LLM2Vec could be combined with the supervised learning. In the paper the author used contrastive learning with the labeled dataset. (Like information retrieval dataset.) The training combined the instructions listed in the Table 10 to generate the embedding. How the training works is like the one described in the other [paper](https://arxiv.org/pdf/2401.00368). Given a relevant query-document pair, we have
 
-$$ q^{+}_{inst} = \textrm{Instruct:}\{\textrm{instruction}\} \\n \textrm{Query}\{q^{+}\} $$
+$$ q^{+}_{inst} = \textrm{Instruct:}\{\textrm{instruction}\} \textbackslash n \textrm{Query}\{q^{+}\} $$
 
 With the above and the document embedding, we could apply the InfoNCE to train the model.
 
@@ -54,5 +54,12 @@ From the huggingface repository[McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp
 
 However, how the code and model are loaded through the huggingface config along with the base model is another topic. 
 
+# NV-Embed and latent attention layer
+The other paper [NV-Embed](https://arxiv.org/abs/2405.17428) is also utilizing LLM for text embedding. In this paper the backbone idea is the same which is removing the causal attention mask. The interesting idea of the paper is the authors proposed using **latent attention layer** instead of pooling for generating the final sequence embedding. From the authors' statement, different types of pooling have their own limitation
 
+- Pooling with <EOS> token: It would suffer from recency bias
+- Mean pooling: Dilute the important information from key phrases
 
+How latent attention layer works is as the below figure:
+
+![nv_embed_figure1](/docs/ml_misc/llm2vec/images/nv_embed_figure1.png)
