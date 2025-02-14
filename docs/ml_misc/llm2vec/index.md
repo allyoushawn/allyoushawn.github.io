@@ -44,7 +44,7 @@ The paper tried three types of pooling approach: EOS, mean pooling and weighted 
 ## LLM2Vec with supervised training
 The LLM2Vec could be combined with the supervised learning. In the paper the author used contrastive learning with the labeled dataset. (Like information retrieval dataset.) The training combined the instructions listed in the Table 10 to generate the embedding. How the training works is like the one described in the other [paper](https://arxiv.org/pdf/2401.00368). Given a relevant query-document pair, we have
 
-$$ q^{+}_{inst} = \textrm{Instruct:}\{\textrm{instruction}\} \textbackslash n \textrm{Query}\{q^{+}\} $$
+$$ q^{+}_{inst} = \textrm{Instruct:}\{\textrm{instruction}\} \setminus n \textrm{Query}\{q^{+}\} $$
 
 With the above and the document embedding, we could apply the InfoNCE to train the model.
 
