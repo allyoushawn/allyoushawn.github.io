@@ -41,6 +41,13 @@ With the above two steps, we should have a model that could leverage the whole s
 ## Pooling
 The paper tried three types of pooling approach: EOS, mean pooling and weighted mean pooling. The authors found that the mean pooling approach worked the best overall. How the pooling approaches are implemented is shown through the code [here](https://github.com/McGill-NLP/llm2vec/blob/main/llm2vec/llm2vec.py#L241-L273). As a side note, the weighted mean pooling here means the tokens in the later part of the sequence would have larger weights.
 
+## LLM2Vec with supervised training
+The LLM2Vec could be combined with the supervised learning. In the paper the author used contrastive learning with the labeled dataset. (Like information retrieval dataset.) The training combined the instructions listed in the Table 10 to generate the embedding. How the training works is like the one described in the other [paper](https://arxiv.org/pdf/2401.00368). Given a relevant query-document pair, we have
+
+$$ q^{+}_{inst} = \textrm{Instruct:}\{\textrm{instruction}\} \\n \textrm{Query}\{q^{+}\} $$
+
+With the above and the document embedding, we could apply the InfoNCE to train the model.
+
 
 ## Implementation details of bidirectional attention
 From the huggingface repository[McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp), we see that it defines a class `LlamaEncoderModel` [(here)](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp/blob/main/modeling_llama_encoder.py#L54). In this class, every layer now is a `ModifiedLlamaDecoderLayer` which [turned off all the `is_causal` flags](https://huggingface.co/McGill-NLP/LLM2Vec-Meta-Llama-3-8B-Instruct-mntp/blob/main/modeling_llama_encoder.py#L14-L32).
