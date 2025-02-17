@@ -78,4 +78,4 @@ $$
 w_i = \frac{T_i}{e(X_i)} + \frac{1-T_i}{1-e(X_i)}
 $$
 
-Re-weight individuals to create a "pseudo-population" where the treatment assignment is independent of the covariates.
+Re-weight individuals to create a "pseudo-population" where the treatment assignment is independent of the covariates. With the weights, we could leverage them to indicate the sample's weights during training the model.
