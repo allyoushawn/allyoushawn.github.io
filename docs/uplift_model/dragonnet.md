@@ -12,4 +12,4 @@ Dragon net is the model combining the uplift modeling and deep learning. It is p
 
 Intuitively, the loss would be the following
 
-$$\sum_{i} \[y_i - \hat{f}_{T_i}(x_i)\]^2 + \lambda Xent(T_i, \hat{e}(x_i))$$
+$$\sum_{i} [y_i - \hat{f}_{T_i}(x_i)]^2 + \lambda Xent(T_i, \hat{e}(x_i))$$
