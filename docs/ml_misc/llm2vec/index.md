@@ -1,6 +1,7 @@
 ---
 title: LLM-based text embedding
 layout: default
+parent: ML Misc.
 nav_order: 10
 ---
 
