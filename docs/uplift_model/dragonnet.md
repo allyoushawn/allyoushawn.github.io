@@ -20,4 +20,16 @@ However, the $$\hat{f}_{T_i}$$ estimator above would suffer from the confounding
 
 The author used the section 3 to illustrate the idea of targeted regularization. The loss function is the below
 
-$$ T-Loss = \frac{1}{n}\sum_i \{y_i - [\hat{f}_{T_i}(x_i) + \epsilon [\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}]   ]  \}^2$$
+$$ \textrm{T-Loss} = \{y_i - [\hat{f}_{T_i}(x_i) + \epsilon (\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)})   ]  \}^2$$
+
+and the final loss function for instance `i` is now
+
+$$ [y_i - \hat{f}_{T_i}(x_i)]^2 + \lambda Xent(T_i, \hat{e}(x_i)) + \beta \textrm{T-Loss}$$
+
+During inference, we are using the following to estimate CATE
+
+$$\textrm{CATE} = \tilde{f}_{1}(x) - \tilde{f}_0(x)$$
+
+$$\tilde{f}_t(x) = \hat{f}_t(x) + \epsilon (\frac{t}{\hat{e}(x)} - \frac{1-t}{1 - \hat{e}(x)}) $$
+
+In the paper it states that if we are minimizing the above final loss function, the CATE estimator would satisfy the equation 3.1 and therefore the CATE estimator would converge to the true estimator at a fast rate and is asymptotically the most data efficient estimator possible.
