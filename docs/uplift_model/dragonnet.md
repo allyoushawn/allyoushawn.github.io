@@ -20,4 +20,4 @@ However, the $$\hat{f}_{T_i}$$ estimator above would suffer from the confounding
 
 The author used the section 3 to illustrate the idea of targeted regularization. The loss function is the below
 
-$$ [y_i - (\hat{f}_{T_i}(x_i) + \epsilon [\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}]   )  ]^2$$
+$$ T-Loss = \frac{1}{n}\sum_i \{y_i - [\hat{f}_{T_i}(x_i) + \epsilon [\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}]   ]  \}^2$$
