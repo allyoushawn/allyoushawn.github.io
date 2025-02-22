@@ -36,8 +36,8 @@ In the paper it states that if we are minimizing the above final loss function, 
 
 By observing the targeted regularization, we could see that it is similar to the [doubly robust (DR) estimator](https://causalml.readthedocs.io/en/latest/methodology.html#doubly-robust-dr-learner) which is 
 
-$$\textrm{CATE(x_i)}_{DR} = \hat{f}_1(x_i) - \hat{f}_0(x_i) + (y_i - \hat{f}_{T_i})(\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}) $$
+$$\textrm{CATE}_{DR}(x_i) = \hat{f}_1(x_i) - \hat{f}_0(x_i) + (y_i - \hat{f}_{T_i})(\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}) $$
 
-They all follow the form of $$ \textrm{initial_CATE_estimation} + \textrm{correction_term} * \textrm{propoensity_weighting} $$
+They all follow the form of $$ \textrm{initial CATE estimation} + (\textrm{correction term}) * (\textrm{propoensity weighting})$$
 
 while in the DR estimator the correction term is obtained through labels and here in the dragon net the correction is a learnable parameter.
