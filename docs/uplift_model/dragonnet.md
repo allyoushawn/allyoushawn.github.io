@@ -13,3 +13,11 @@ Dragon net is the model combining the uplift modeling and deep learning. It is p
 Intuitively, the loss would be the following
 
 $$\sum_{i} [y_i - \hat{f}_{T_i}(x_i)]^2 + \lambda Xent(T_i, \hat{e}(x_i))$$
+
+However, the $$\hat{f}_{T_i}$$ estimator above would suffer from the confounding bias since the loss does not consider the interaction between the uplift and the propensity score.
+
+## Targeted Regularization
+
+The author used the section 3 to illustrate the idea of targeted regularization. The loss function is the below
+
+$$ [y_i - (\hat{f}_{T_i}(x_i) + \epsilon [\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}]   )  ]^2$$
