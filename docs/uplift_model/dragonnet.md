@@ -22,7 +22,7 @@ The author used the section 3 to illustrate the idea of targeted regularization.
 
 $$ \textrm{T-Loss} = \{y_i - [\hat{f}_{T_i}(x_i) + \epsilon (\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)})   ]  \}^2$$
 
-and the final loss function for instance `i` is now
+and the final loss function for instance $$i$$ is now
 
 $$ [y_i - \hat{f}_{T_i}(x_i)]^2 + \lambda Xent(T_i, \hat{e}(x_i)) + \beta \textrm{T-Loss}$$
 
@@ -33,3 +33,11 @@ $$\textrm{CATE} = \tilde{f}_{1}(x) - \tilde{f}_0(x)$$
 $$\tilde{f}_t(x) = \hat{f}_t(x) + \epsilon (\frac{t}{\hat{e}(x)} - \frac{1-t}{1 - \hat{e}(x)}) $$
 
 In the paper it states that if we are minimizing the above final loss function, the CATE estimator would satisfy the equation 3.1 and therefore the CATE estimator would converge to the true estimator at a fast rate and is asymptotically the most data efficient estimator possible.
+
+By observing the targeted regularization, we could see that it is similar to the [doubly robust (DR) estimator](https://causalml.readthedocs.io/en/latest/methodology.html#doubly-robust-dr-learner) which is 
+
+$$\textrm{CATE(x_i)}_{DR} = \hat{f}_1(x_i) - \hat{f}_0(x_i) + (y_i - \hat{f}_{T_i})(\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}) $$
+
+They all follow the form of $$ \textrm{initial_CATE_estimation} + \textrm{correction_term} * \textrm{propoensity_weighting} $$
+
+while in the DR estimator the correction term is obtained through labels and here in the dragon net the correction is a learnable parameter.
