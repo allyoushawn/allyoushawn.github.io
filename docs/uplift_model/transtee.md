@@ -52,8 +52,6 @@ From the author's [implementation](https://github.com/hlzhang109/TransTEE/blob/m
         # ...
         
         return torch.mean(hidden, dim=1).squeeze(), Q  # The first returned tensor would be used in treatment modeling with size [batch, d]
-
-
 ```
 
 
