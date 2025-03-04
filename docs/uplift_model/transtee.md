@@ -40,5 +40,23 @@ The covariate embedding is implemented with one layer of MLP. The below is the c
         # ...
 ```
 
-## Propensity score modeling
-TBA
+## Propensity score modeling (Treatment modeling)
+In paper's section 4 it did not put too much context on how the propensity score modeling was implemented which was important since it's using observational data. As a note here the paper is focusing on the continuous treatment, and therefore it's not the exactly same concept of propensity score which is commonly used in the discrete treatment setup. 
+
+From the author's [implementation](https://github.com/hlzhang109/TransTEE/blob/main/Dosage/TransTEE.py#L110C15-L110C51) we could see that the continuous treatment is modeled with the mean pooling of covariate embedding over the $$p$$ dimension.
+
+```python
+
+    def forward(self, x):
+        hidden = self.feature_weight(self.linear1(x))  # hidden: [batch, p, d]
+        # ...
+        
+        return torch.mean(hidden, dim=1).squeeze(), Q  # The first returned tensor would be used in treatment modeling with size [batch, d]
+
+
+```
+
+
+## Implementation
+
+In addition to the author's implementation, another implementation reference could be found in [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/uplift_model/transTEE/transTEE.ipynb).

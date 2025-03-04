@@ -41,3 +41,6 @@ $$\textrm{CATE}_{DR}(x_i) = \hat{f}_1(x_i) - \hat{f}_0(x_i) + (y_i - \hat{f}_{T_
 They all follow the form of $$ \textrm{initial CATE estimation} + (\textrm{correction term}) * (\textrm{propoensity weighting})$$
 
 while in the DR estimator the correction term is obtained through labels and here in the dragon net the correction is a learnable parameter.
+
+## Implementation
+An implementation reference could be found [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/uplift_model/dragon_net.ipynb). 
