@@ -20,7 +20,25 @@ In this way with the Transformer decoder structure we could get the final repres
 ![transtee_structure](/docs/uplift_model/images/transtee/transtee_structure.png)
 
 ## Covariate embedding
-TBA
+The idea of covariate embedding allows us to capture the relation between each covariate by prepare the embedding for each covariate. In this way, with an input feature with dimension $$p$$ we could have a sequence of covariate embedding with size $$d$$. 
+
+The covariate embedding is implemented with one layer of MLP. The below is the code snippet from the [author's code](https://github.com/hlzhang109/TransTEE/blob/main/Dosage/utils/trans_ci.py#L34).
+
+```python
+    def __init__(self, **kwargs):
+        # ...
+        self.treat_weight = nn.Linear(1, emb_size)
+        
+        # ...
+    
+    def forward(self, x):
+        # x is [batch, p]
+        # ...
+        ebd = self.treat_weight(x.unsqueeze(-1).to(torch.float32))  # x.unsqueeze(-1) make x to be [batch, p, 1]
+        
+        # ebd now is [batch, p, 1] x [1, d] = [batch, p, d]
+        # ...
+```
 
 ## Propensity score modeling
 TBA
