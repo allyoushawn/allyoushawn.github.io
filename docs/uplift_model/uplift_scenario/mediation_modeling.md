@@ -1,8 +1,8 @@
 ---
 title: Mediation modeling
 layout: default
-parent: Uplift Model
-nav_order: 5
+parent: Uplift model scenarios
+nav_order: 35
 ---
 
 TBA.
