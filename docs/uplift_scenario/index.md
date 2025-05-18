@@ -1,7 +1,8 @@
 ---
 title: Uplift model scenarios
+has_children: true
 layout: default
-nav_order: 25
+nav_order: 10
 ---
 
 In this section, we introduce different scenarios of uplift modeling based on the introduction 
