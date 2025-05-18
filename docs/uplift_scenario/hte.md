@@ -56,7 +56,7 @@ If we looked only at the Average Treatment Effect (ATE), and obtained ATE = −1
 
 
 
-We would miss the fact that:
+On the other hand QTE could help us understand that:
 - Slowest users benefit the most.
 - Fastest users see no change.
 
