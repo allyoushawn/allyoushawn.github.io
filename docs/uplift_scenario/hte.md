@@ -5,8 +5,6 @@ parent: Uplift model scenarios
 nav_order: 10
 ---
 
-Reference: [Analyzing Experiment Outcomes: Beyond Average Treatment Effects](https://www.uber.com/blog/analyzing-experiment-outcomes/?uclick_id=ab87d21b-5786-4b35-984f-eef020820c8d)
-
 
 # Scenario formulation
 Now let's discuss a more general case:
