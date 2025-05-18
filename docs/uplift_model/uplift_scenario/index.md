@@ -1,5 +1,6 @@
 ---
 title: Uplift model scenarios
+has_children: true
 layout: default
 parent: Uplift Model
 nav_order: 25
