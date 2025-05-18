@@ -36,3 +36,64 @@ With the above setup, we model that ATE could be decomposed into two elements: A
   - Which usually we would model it as $$\mathbb{E}[Y(1, M(1)) - M(1, M(0))]$$
 
 ![mediation_modeling_diagram](/docs/uplift_scenario/images/mediation_modeling/mediation_modeling_diagram.png)
+
+# Example
+- Goal: Using the setup above, we want to quantify how much of the supporting tickets reducing could be attributed to that the graphs helps the driver understanding their earnings more
+
+
+## Step 1: Estimate ATE
+Suppose in our dataset we see that
+- Treatment group average support tickets per driver: 0.80
+- Control group average support tickets per driver: 1.00
+
+So, $$ATE = 0.80 - 1.00 = -0.20$$. This means the graph reduces tickets by 0.20 per driver.
+
+## Step 2: Estimate ACME
+
+It breaks down into two parts.
+
+**Part1: Fit a model for the mediator**
+
+We want to know how showing the graphs could help drivers understanding. 
+
+- We use user survey data to represent the driver's understanding. 
+- In the survey, 5 indicates understanding well and 1 indicates the opposite. We conducted the user survey for drivers with and without showing the earning graphs. (Our treatment and control groups.) 
+- We train a model with the dataset whose label is the survey score.
+
+
+With the above, we could use the model to estimate the ATE regarding the driver understanding. Suppose we have
+
+$$\mathbb{E}[M∣T=1]−\mathbb{E}[M∣T=0]=0.05$$
+
+The above shows that showing the earning graphs could increase the drivers' understanding by 0.05.
+
+**Part2: Fit a model for the outcome**
+
+Secondly, we want to know how improving the understanding would influence the outcome which is the number of filed supporting tickets for the treatment group users. 
+
+- We train a model using treatment group driver’s understanding as the input and whether the driver file the ticket as the label.
+- For simplicity, we model it as a simple linear function
+
+Suppose we found the slope of the linear function is $$\frac{dY}{dM}=-0.75$$. It’s saying as we increase the understanding score by 1 we would reduce 0.75 tickets under the treatment.
+
+**Part 3: ACME estimation**
+
+Combining the above two parts, we know that
+
+- The earning graphs could increase the drivers' understanding by 0.05
+- If we increase the understanding score by 1 we would reduce 0.75 tickets under the treatment
+
+Therefore, the overall impacts on the outcome caused by the increased understanding (ACME) is $$0.05 * -0.75 = -0.375$$ tickets
+
+## Step 3: Calculate the Proportion Mediated
+
+With the previous two steps, we know:
+-Total effect (ATE) = -0.20
+- Mediated effect (ACME) = -0.0375
+
+
+We have proportion mediated  $$ATE/ACME =−0.20/−0.0375 =0.1875=18.75%$$
+
+The interpretation would be uut of the 0.20 ticket reduction:
+- 0.0375 tickets were reduced because of improved understanding (mediated effect)
+- The rest (0.1625 tickets) came from other factors (direct effect).
