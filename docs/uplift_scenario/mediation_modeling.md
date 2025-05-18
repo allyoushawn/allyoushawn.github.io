@@ -92,7 +92,7 @@ With the previous two steps, we know:
 - Mediated effect (ACME) = -0.0375
 
 
-We have proportion mediated  $$ATE/ACME =−0.20/−0.0375 =0.1875=18.75%$$
+We have proportion mediated  $$ATE/ACME =−0.20/−0.0375 =0.1875$$
 
 The interpretation would be uut of the 0.20 ticket reduction:
 - 0.0375 tickets were reduced because of improved understanding (mediated effect)
