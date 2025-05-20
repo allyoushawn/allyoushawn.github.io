@@ -25,7 +25,7 @@ With this approach, we model the intention instead of whether the users really r
 
 **Per protocol/As-treated**
 
-In this approach, we filter the dataset and select the users really receive the intended treatments. However, this selection would break the randomness. If there is confounded factors, the users we select would be systematically different from those we don't, and thus we would introduce bias into the modeling. In general it would not be a good idea.
+In this approach, we filter the dataset and select the users really receive the intended treatments. However, this selection would break the randomness. If there is confounded factors, the users we select would be systematically different from those we don't, and thus we would introduce bias into the modeling. In general, it would not be a good idea.
 
 **Compiler average causal effect (CACE)**
 
@@ -37,4 +37,8 @@ We will introduce CACE in the below sections.
 
 # CACE
 
-TBA.
+Let's start with the equation, and we could dive deeper later.
+
+$$
+\textrm{CACE} = \frac{\textrm{ITT}}{\textrm{Compliance rate}} = \frac{\mathbb{E}[Y|T=1] - \mathbb{E}[Y|T=0]}{\mathbb{E}[D|T=1] - \mathbb{E}[D|T=0]}
+$$
