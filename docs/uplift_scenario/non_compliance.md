@@ -57,4 +57,14 @@ An example is as the below:
     - CACE: 10 / 0.6 = 16.67
 
 ## Complier
-We need to know that in reality there is no way we could understand who are compliers without assumptions. The reason is that the complier's concept is based on counterfactual observation: Users would take the treatment if in the treatment group and would not take the treatment if in the control group. However, we could not assign a users in treatment group and control group simultaneously. Therefore, we could only use group estimate as the above to estimate the compliance rate.
+We need to know that in reality there is no way we could understand who are compliers without assumptions. The reason is that the complier's concept is based on counterfactual observation: Users would take the treatment if in the treatment group AND would not take the treatment if in the control group. However, we could not assign a users in treatment group and control group simultaneously. Therefore, we could only use group estimate as the above to estimate the compliance rate.
+
+# CATE with CACE
+
+(More on ignorability [here](https://allyoushawn.github.io/docs/uplift_model/uplift_basic.html#random-collection-trial-rct))
+
+Let's recap the ignorability assumption. The ignorability assumption is when we condition on $$X$$, the only difference of $$Y(0)$$ and $$Y(1)$$ comes solely from the different treatment assignment.
+
+$$ Y(0), Y(1) \perp\!\!\!\perp T | X $$
+
+However, the existence of the non-compliance could break the assumption. If some factors unobserved in $$X$$ drive the non-compliance, the assumption will no longer hold. When the assumption does not hold, we need to use CACE with CACE to corrrect the estimation.
