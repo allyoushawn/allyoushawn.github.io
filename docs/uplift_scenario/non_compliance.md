@@ -59,12 +59,35 @@ An example is as the below:
 ## Complier
 We need to know that in reality there is no way we could understand who are compliers without assumptions. The reason is that the complier's concept is based on counterfactual observation: Users would take the treatment if in the treatment group AND would not take the treatment if in the control group. However, we could not assign a users in treatment group and control group simultaneously. Therefore, we could only use group estimate as the above to estimate the compliance rate.
 
-# CATE with CACE
+# CATE for Non-compliance
 
 (More on ignorability [here](https://allyoushawn.github.io/docs/uplift_model/uplift_basic.html#random-collection-trial-rct))
 
-Let's recap the ignorability assumption. The ignorability assumption is when we condition on $$X$$, the only difference of $$Y(0)$$ and $$Y(1)$$ comes solely from the different treatment assignment.
+CATE models the outcome given the treatment assignment and individual features $$X$$. It requires the ignorability assumption.
 
-$$ Y(0), Y(1) \perp\!\!\!\perp T | X $$
+Let's recap the ignorability assumption. The ignorability assumption is when we condition on $$X$$, the only difference of $$Y(0)$$ and $$Y(1)$$ comes solely from the different treatment.
 
-However, the existence of the non-compliance could break the assumption. If some factors unobserved in $$X$$ drive the non-compliance, the assumption will no longer hold. When the assumption does not hold, we need to use CACE with CACE to corrrect the estimation.
+$$ Y(0), Y(1) \perp\!\!\!\perp D | X $$
+
+- Note: Usually we use $$T$$ in the equation. However, in this article $$T$$ is used for the treatment assignment and $$D$$ is for the actual treatment received. In most cases they should be the same while when we are discussing non-compliance they would not, so we use $$D$$ here.
+
+However, the existence of the non-compliance could break the assumption since $$D$$ would be systematically different from random. If some factors unobserved in $$X$$ drive the non-compliance, the assumption will no longer hold, and we will need to handle it. Below are two example approaches
+
+## Instrumental Variable CATE (IV-CATE)
+
+Instrumental variable (IV):
+- Usually is represented with notation $$Z$$, but here is $$T$$ and will be illustrated below 
+- Is a variable that allow us to estimate causal effects when the ignorability fails particularly due to the non-compliance
+- For the context here, it is the treatment assignment. In comparison to IV, $$D$$ here represents really receive the treatment effects
+- Assumption
+    - IV affects $$D$$
+    - IV has no dirrect impacts on the outcome $$Y$$. It only influences $$Y$$ through $$T$$
+    - IV satisfies the ignorability $$ Y(0), Y(1) \perp\!\!\!\perp T | X $$
+
+From the above properties of IV, we could see that IV-CATE is based on the CACE concept and IV here is for estimating the Intent-to-Treat causal effects. The IV-CATE is calculated as below
+
+$$
+\textrm{IV-CATE} = \frac{\mathbb{E}[Y|T=1, X=x] - \mathbb{E}[Y|T=0, X=x]}{\mathbb{E}[D|T=1, X=x] - \mathbb{E}[D|T=0, X=x]}
+$$
+
+To build the model, we need the dataset with $$Y, X, T, D $$.
