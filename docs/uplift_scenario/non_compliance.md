@@ -73,7 +73,7 @@ $$ Y(0), Y(1) \perp\!\!\!\perp D | X $$
 
 However, the existence of the non-compliance could break the assumption since $$D$$ would be systematically different from random. If some factors unobserved in $$X$$ drive the non-compliance, the assumption will no longer hold, and we will need to handle it. Below are two example approaches
 
-## Instrumental Variable CATE (IV-CATE)
+## Instrumental variable CATE (IV-CATE)
 
 Instrumental variable (IV):
 - Usually is represented with notation $$Z$$, but here is $$T$$ and will be illustrated below 
@@ -91,3 +91,9 @@ $$
 $$
 
 To build the model, we need the dataset with $$Y, X, T, D $$.
+
+## Propensity adjustment
+
+We use $$X$$ to model selection into treatment, and then recover CATE  
+
+Example approaches here are DR Learners, Dragon Net.
