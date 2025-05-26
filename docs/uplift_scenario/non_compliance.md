@@ -83,7 +83,7 @@ Instrumental variable (IV):
     - IV affects $$D$$
     - IV has no direct impacts on the outcome $$Y$$. It only influences $$Y$$ through $$T$$
 
-We also need the assumption that IV satisfies the ignorability $$ Y(0), Y(1) \perp\!\!\!\perp T | X $$.
+We also need the assumption that IV satisfies the ignorability $$Y(0), Y(1) \perp\!\!\!\perp T|X$$.
 
 From the above properties of IV, we could see that IV-CATE is based on the CACE concept and IV here is for estimating the Intent-to-Treat causal effects. The IV-CATE is calculated as below
 
