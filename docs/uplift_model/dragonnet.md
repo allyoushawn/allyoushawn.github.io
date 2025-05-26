@@ -32,15 +32,19 @@ $$\textrm{CATE} = \tilde{f}_{1}(x) - \tilde{f}_0(x)$$
 
 $$\tilde{f}_t(x) = \hat{f}_t(x) + \epsilon (\frac{t}{\hat{e}(x)} - \frac{1-t}{1 - \hat{e}(x)}) $$
 
+The sign of $$\epsilon$$ indicates different things. If the model systematically underestimate the treated effect (meaning Q^nn(1, x) < y), it would push the epsilon to be positive.
+
 In the paper it states that if we are minimizing the above final loss function, the CATE estimator would satisfy the equation 3.1 and therefore the CATE estimator would converge to the true estimator at a fast rate and is asymptotically the most data efficient estimator possible.
 
 By observing the targeted regularization, we could see that it is similar to the [doubly robust (DR) estimator](https://causalml.readthedocs.io/en/latest/methodology.html#doubly-robust-dr-learner) which is 
 
 $$\textrm{CATE}_{DR}(x_i) = \hat{f}_1(x_i) - \hat{f}_0(x_i) + (y_i - \hat{f}_{T_i}(x_i))(\frac{T_i}{\hat{e}(x_i)} - \frac{1-T_i}{1 - \hat{e}(x_i)}) $$
 
-They all follow the form of $$ \textrm{initial CATE estimation} + (\textrm{correction term}) * (\textrm{propoensity weighting})$$
+They all follow the form of $$ \textrm{initial CATE estimation} + (\textrm{correction term}) * (\textrm{propoensity weighting})$$ while in the DR estimator the correction term is obtained through labels and here in the dragon net the correction is a learnable parameter.
 
-while in the DR estimator the correction term is obtained through labels and here in the dragon net the correction is a learnable parameter.
+
+### Role of the targeted regularization
+The role of the targeted regularization here seem to mainly satisfy the math condition that **would converge to the true estimator at a fast rate and is asymptotically the most data efficient estimator possible**. However, adding this would introduce unstableness of the training, for example in the case propensity prediction is either 0.999 or 0.001 the weighting would be super large. 
 
 ## Implementation
 An implementation reference could be found [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/uplift_model/dragon_net.ipynb). 
