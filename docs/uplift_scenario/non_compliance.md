@@ -83,7 +83,7 @@ Instrumental variable (IV):
     - IV affects $$D$$
     - IV has no direct impacts on the outcome $$Y$$. It only influences $$Y$$ through $$T$$
 
-We also need the asusmption that IV satisfies the ignorability $$ Y(0), Y(1) \perp\!\!\!\perp T | X $$.
+We also need the assumption that IV satisfies the ignorability $$ Y(0), Y(1) \perp\!\!\!\perp T | X $$.
 
 From the above properties of IV, we could see that IV-CATE is based on the CACE concept and IV here is for estimating the Intent-to-Treat causal effects. The IV-CATE is calculated as below
 
@@ -95,6 +95,10 @@ To build the model, we need the dataset with $$Y, X, T, D $$.
 
 ## Propensity adjustment
 
-We use $$X$$ to model selection into treatment, and then recover CATE. In IV-CATE, we need two labels regarding the treatment: $$T$$ and $$D$$ and train a model $$P(D|Z=z, X=x)$$ to estimate the compliance. However, in the real world application where observational data is more available which does not have $$T$$ since the treatment assignment concept is not included in the data, we would need to ditch $$T$$ in our modeling. On the propensity adjustment track, we directly model $$P(D|X=x)$$. However, the price of ditching the instrument variable $$T$$ which is an easier variable to guarantee ignorability is that we need the ignorability assumption on $$D$$ by providing a rich enough $$X$$ to make sure we do not have unobserved factors that would break the ignorability assumption. 
+We use $$X$$ to model selection into treatment, and then recover CATE. In IV-CATE, we need two labels regarding the treatment: $$T$$ and $$D$$ and train a model $$P(D|Z=z, X=x)$$ to estimate the compliance. 
+
+However, in the real world application where observational data is more available which does not have $$T$$ since the treatment assignment concept is not included in the data, we would need to ditch $$T$$ in our modeling. On the propensity adjustment track, we directly model $$P(D|X=x)$$
+
+Note that the price of ditching the instrument variable $$T$$ which is an easier variable to guarantee ignorability is that we need the ignorability assumption on $$D$$ by providing a rich enough $$X$$ to make sure we do not have unobserved factors that would break the ignorability assumption. 
 
 Example approaches here are DR Learners, Dragon Net. (Introduced [here](https://allyoushawn.github.io/docs/uplift_model/dragonnet.html).)
