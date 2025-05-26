@@ -48,3 +48,7 @@ The role of the targeted regularization here seem to mainly satisfy the math con
 
 ## Implementation
 An implementation reference could be found [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/uplift_model/dragon_net.ipynb). 
+
+## Other reference
+
+- An interesting article saying the targeted regularization is more like a nice-to-have feature. ([Link](https://zhuanlan.zhihu.com/p/595584232), and the article is written in Chinese)
