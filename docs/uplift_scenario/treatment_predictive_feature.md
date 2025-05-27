@@ -18,3 +18,5 @@ Two common questions would be raised regarding this dataset
 2. Should we still include the GPA as the feature while it would sort of tell us which group the student is
 
 For the first question, the model would not be biased due to the GPA imbalance IF we assume the ignorability assumption holds which is a valid assumption with the RCT setup. The randomness ensures there is no confounding protects our causal estimation.
+
+For the second question, the answer is yes we should include the GPA feature for better outcome prediction and prevent missing any confounding factors.
