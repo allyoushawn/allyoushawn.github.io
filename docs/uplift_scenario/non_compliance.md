@@ -99,7 +99,7 @@ To build the model, we need the dataset with $$Y, X, T, D $$.
 
 We use $$X$$ to model selection into treatment, and then recover CATE. In IV-CATE, we need two labels regarding the treatment: $$T$$ and $$D$$ and train a model below to estimate the compliance.
 
-$$P(D|Z=z, X=x)$$  
+$$P(D|T=t, X=x)$$  
 
 However, in the real world application where observational data is more available which does not have $$T$$ since the treatment assignment concept is not included in the data, we would need to ditch $$T$$ in our modeling. On the propensity adjustment track, we directly model the propensity with 
 
