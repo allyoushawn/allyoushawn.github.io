@@ -42,3 +42,8 @@ We are tempted to think that:
 2. When we are scanning through the features and do t-test, we would encounter [multiple testing issues](https://en.wikipedia.org/wiki/Multiple_comparisons_problem). If we have 1000 features and use 0.05 as significance level, we would expect ~50 features to be significantly different even if the assignment is random.
 3. Here we check one feature at a time, and it's a marginal balance check up. It's possible that we see marginal imbalance but if we check the joint distribution together with other features we would see the imbalance is gone.
 
+If we don't have domain knowledge or a strong reason, we should not remove these features. As a side note, if they are confounding factors, we would need to condition on them to hold the ignorability assumption.
+
+## What should we do instead
+
+For model training, use more robust approaches. For example, use honesty tree in the causal forest training.
