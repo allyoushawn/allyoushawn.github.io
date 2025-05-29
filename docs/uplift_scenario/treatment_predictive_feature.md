@@ -34,5 +34,11 @@ We are tempted to think that:
 1. The feature causes the data leakage through signals of the treatment groups
 2. The signals are picked up by the model
 3. The model has a deceptive good performance
-4. Therefore, we should remove the features
+4. Therefore, we should scan through the features and remove the features that leak the signals
+
+## Why it's possible to see the imbalance
+
+1. The RCT setup ensures independence, not equal distribution. The setup only ensures the probabilistic balance, and it's possible that the finite samples are unbalanced. (For flipping a fair coin 100 times, and we might get 53 heads and 47 tails.)
+2. When we are scanning through the features and do t-test, we would encounter [multiple testing issues](https://en.wikipedia.org/wiki/Multiple_comparisons_problem). If we have 1000 features and use 0.05 as significance level, we would expect ~50 features to be significantly different even if the assignment is random.
+3. Here we check one feature at a time, and it's a marginal balance check up. It's possible that we see marginal imbalance but if we check the joint distribution together with other features we would see the imbalance is gone.
 
