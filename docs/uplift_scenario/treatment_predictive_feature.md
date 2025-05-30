@@ -47,3 +47,5 @@ If we don't have domain knowledge or a strong reason, we should not remove these
 ## What should we do instead
 
 For model training, use more robust approaches. For example, use honesty tree in the causal forest training.
+
+For sanity check, we could train a simple propensity model separately using the same set of features. If this model performs extremely well, our model would have higher risk of data leakage.
