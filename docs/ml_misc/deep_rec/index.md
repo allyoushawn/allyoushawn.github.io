@@ -1,5 +1,5 @@
 ---
-title: DeepRec: LLM with RecSys
+title: DeepRec LLM with RecSys
 layout: default
 parent: ML Misc.
 nav_order: 20
