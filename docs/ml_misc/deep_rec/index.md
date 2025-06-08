@@ -8,6 +8,8 @@ nav_order: 20
 Paper: [DeepRec: Towards a Deep Dive Into the Item Space with
 Large Language Model Based Recommendation](https://arxiv.org/pdf/2505.16810)
 
+**TBA**
+
 # Background: LLM with RecSys
 
 - TRM (Traditional recommendation model)
