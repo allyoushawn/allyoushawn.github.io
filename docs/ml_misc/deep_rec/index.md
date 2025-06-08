@@ -32,7 +32,7 @@ Large Language Model Based Recommendation](https://arxiv.org/pdf/2505.16810)
 **Section 2.3**
 - It is hard to have the label for the interaction between LLM and TRM
 - We use RL. We run LLM to interact with the TRM collect the interactions and have rewards on the interaction
-  - For the interaction, when we hit <|end_of_preference|>, we would stop the generation (break out the for loop token inference) and ask TRM to generate candidates. And we would attach the candidates and continue the process
+  - For the interaction, when we hit <\|end_of_preference\|>, we would stop the generation (break out the for loop token inference) and ask TRM to generate candidates. And we would attach the candidates and continue the process
     - TRM retrieval
       - 0.5 * (TRM X embedding + text encoding) and use the embedding to dot product the item embedding
             -  (Comment) This is somewhat weird...
