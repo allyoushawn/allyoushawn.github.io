@@ -43,14 +43,25 @@ In the paper, it proposes a new way which is leveraging LLM's interaction with T
       - 0.5 * (TRM X embedding + text encoding) and use the embedding to dot product the item embedding
       -  (Comment) This is somewhat weird...given the text embedding and TRM embedding are not in the same embedding space
 - The final output format would looks like \<think> (interaction going on) </thing> \<recommendation_list> (the list)</recommendation_list>
-- Difficulty-based data selection: If the label item is outside the top 100 of the final ranking list, the data instance it would be considered too difficult and be discarded
+- Each interaction trajectory in the format above would be a data instance and we would assign rewards to them for RL training
+- Difficulty-based data selection: If the label item is outside the top 100 of the final ranking list, the data instance would be considered too difficult and be discarded
 
-**Section 2.4: Rewards**
-- (… how rewards are computed is clear in the section)
-- Collaborative embedding
-  - For example, in SASRec it used the input sequence’s last item’s embedding to do the retrieval. Here the last item’s embedding
+**Rewards**
+- There are two levels of rewards introduced
+- Process level
+    - More focusing on the format / process
+    - Format reward: Check if the output format is correct
+    - Invocation count reward: Encourage the model to have more interaction turns with TRM
+    - Preference diversity reward: Encourage the model to explore different user preference
+      - Using the text embedding to compute the similarity of the output user preference between different turns 
+- Outcome level
+  - More focusing on whether the recommendation is correct. Suppose the final recommendation list size is $$K$$
+  - Point wise reward: For every item in the predicted list, compute it's title and TRM embedding similarity of the target item. The final reward is weighted average using the ranking of the item. The authors call it model-based point-wise rewards since the recommendation data is very sparse
+    - TRM embedding: For example, in SASRec it used the input sequence’s last item’s embedding to do the retrieval. Here the last item’s embedding
+  - List-wise reward: Check if the target item is in the final list
+  - Rank reward: The ranking of the target item in the final list
 
-**Section 2.5: Two stage RL training**
+**Two stage RL training**
 - Stage 1: Only focus on process level reward (For stability)
 - Stage 2: Focus on rFormat + outcome level reward
   - (Not include invocation and diversity here since we want to prevent the model gaming the reward by repeating the reasoning while not focusing on learning outcome)
@@ -63,7 +74,7 @@ In the paper, it proposes a new way which is leveraging LLM's interaction with T
 
 
 **Note**
-- In the POC code with Colab, we found that if cat is not initially searched, it would be hard for training as the training goes longer. The model would fit to weird thing. Therefore exploration enough is important in RL training.
+- In the [POC code with Colab](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/ml_misc/LLM_rl_training_example.ipynb), we found that if cat is not initially searched, it would be hard for training as the training goes longer. The model would converge to weird location. Therefore, exploration enough is important in RL training.
 - To me, the reason why this multi-turn interaction would work would rely on the assumption that the LLM knows all the information about lots of movies. The retrieval is just helping the LLM to know whether the RecSys has the suitable movies on its mind which are based on the user’s interaction history
 
 
