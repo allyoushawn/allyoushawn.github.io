@@ -39,7 +39,7 @@ In the paper, it proposes a new way which is leveraging LLM's interaction with T
 - The authors use RL to train the model. They run LLM to interact with the TRM collect the interactions and have rewards on the interaction
   - For the interaction, when we hit <\|end_of_preference\|>, we would stop the generation (break out the for loop token inference) and ask TRM to generate candidates. And we would attach the candidates and continue the process
     - TRM retrieval
-      - 0.5 * (TRM X embedding + text encoding) and use the embedding to dot product the item embedding
+      - 0.5 * (TRM $$X$$ embedding + text encoding) and use the embedding to dot product the item embedding
       -  (Comment) This is somewhat weird...given the text embedding and TRM embedding are not in the same embedding space
 - The final output format would looks like \<think> (interaction going on) </thing> \<recommendation_list> (the list)</recommendation_list>
 - Each interaction trajectory in the format above would be a data instance and we would assign rewards to them for RL training
