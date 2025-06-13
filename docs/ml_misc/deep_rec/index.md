@@ -10,9 +10,12 @@ Large Language Model Based Recommendation](https://arxiv.org/pdf/2505.16810)
 
 **TBA**
 
+In this paper, we introduce an approach of how to leverage LLM for the sequential ranking task.
+
+
 # Background: LLM with RecSys
 
-- TRM (Traditional recommendation model)
+In general, we have three major ways of how LLMs could be used in the ranking combined with traditional recommendation model (TRM).
 
 **LLM-enhanced TRM**
 - LLMs can provide extra features about items or augment user interaction data for TRMs
@@ -24,21 +27,22 @@ Large Language Model Based Recommendation](https://arxiv.org/pdf/2505.16810)
 - Map all items into a concise item space (vocabulary)
 - Make input items as tokens and predict the next item
 
+In the paper, it proposes a new way which is leveraging LLM's interaction with TRM for the exploration and make the final recommendation.
 
 # DeepRec
 - Multi-turn
-  - Existing LLM-based RSs are all limited to one-time recommendation, which are inherently shallow in their exploration of the item space. To address this, the idea is to extend the interaction between LLMs and TRMs to a multi-turn retrieval paradigm for wider exploration. 
-  - $$X$$ -> LLM generate thoughts -> LLM generate user preference -> TRM retrieval -> {thoughts -> user preference loop} -> Final ranking
+  - Existing LLM-based RecSys are all limited to one-time recommendation, which are inherently shallow in their exploration of the item space. To address this, the idea is to extend the interaction between LLMs and TRMs to a multi-turn retrieval paradigm for wider exploration. 
+  - User input sequence $$X$$ -> LLM generate thoughts -> LLM generate user preference -> TRM retrieval -> {thoughts -> user preference -> TRM retrieval loop x m turns} -> Final ranking
 
 
-**Section 2.3**
+**Recommendation Model Based Data Rollout**
 - It is hard to have the label for the interaction between LLM and TRM
-- We use RL. We run LLM to interact with the TRM collect the interactions and have rewards on the interaction
+- The authors use RL to train the model. They run LLM to interact with the TRM collect the interactions and have rewards on the interaction
   - For the interaction, when we hit <\|end_of_preference\|>, we would stop the generation (break out the for loop token inference) and ask TRM to generate candidates. And we would attach the candidates and continue the process
     - TRM retrieval
       - 0.5 * (TRM X embedding + text encoding) and use the embedding to dot product the item embedding
-            -  (Comment) This is somewhat weird...
-- The final format would looks like <think> (interaction going on) </thing> <recommendation_list> (the list)</recommendation_list>
+      -  (Comment) This is somewhat weird...given the text embedding and TRM embedding are not in the same embedding space
+- The final output format would looks like \<think> (interaction going on) </thing> \<recommendation_list> (the list)</recommendation_list>
 - Difficulty-based data selection: If the label item is outside the top 100 of the final ranking list, the data instance it would be considered too difficult and be discarded
 
 **Section 2.4: Rewards**
