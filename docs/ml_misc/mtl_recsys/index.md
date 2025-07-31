@@ -34,4 +34,4 @@ Nowadays, an industry-level recommendation system (RecSys) often uses a MLT mode
 - Seesaw effect issue
     - Improve one task and hurt others
 
-![shared_bottom_mlt](/docs/ml_misc/mtl_recysys/images/shared_bottom_mtl.png)
+![shared_bottom_mlt](/docs/ml_misc/mtl_recsys/images/shared_bottom_mtl.png)
