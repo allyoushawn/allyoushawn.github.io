@@ -34,4 +34,10 @@ Nowadays, an industry-level recommendation system (RecSys) often uses a MLT mode
 - Seesaw effect issue
     - Improve one task and hurt others
 
-![shared_bottom_mlt](/docs/ml_misc/mtl_recsys/images/shared_bottom_mtl.png)
+![shared_bottom_mtl](/docs/ml_misc/mtl_recsys/images/shared_bottom_mtl.png)
+
+A simple way to combat the conflicted targets is to separate the whole shared encoder into several encoders, and attach linear combination layer to allow flexible parameter sharing (see the graph below.) In other words, if the tasks are conflicted and the optimal choice is not to share parameters at all, the linear combination weights would become a one-hot vector.
+
+However, people find the improvements are very limited.
+
+![cross_stitch_mtl](/docs/ml_misc/mtl_recsys/images/cross_stitch_mtl.png)
