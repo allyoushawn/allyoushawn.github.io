@@ -58,7 +58,7 @@ Intuitively speaking, it seems that the gating structure of MoE is just another 
 
 To show how the gating structure learns how to decide the experts, consider the MSE optimization case below.
 
-- MSE loss $$\[y-\sum{p_i * o_i}\]^2$$. $$p_i$$ is the gating output on expert $$i$$, $$o_i$$ is the expert $$i$$'s output
+- MSE loss $$(y-\sum_i p_i * o_i)^2$$. $$p_i$$ is the gating output on expert $$i$$, $$o_i$$ is the expert $$i$$'s output
 
 
 ![moe_structure](/docs/ml_misc/mtl_recsys/images/MoE_structure.png)
