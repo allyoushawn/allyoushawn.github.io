@@ -59,7 +59,13 @@ Intuitively speaking, it seems that the gating structure of MoE is just another 
 To show how the gating structure learns how to decide the experts, consider the MSE optimization case below.
 
 - MSE loss $$L = (y-\sum_i p_i * o_i)^2$$. $$p_i$$ is the gating output on expert $$i$$, $$o_i$$ is the expert $$i$$'s output
-- For the derivative of gating output $$p_j$$, we have $$\frac{\partial L}{\partial p_j} = (y - \hat{y} * (-1) * o_j)$$ where $$\hat{y} = \sum_i p_i * o_i)$$
+- For the derivative of gating output $$p_j$$, we have $$\frac{\partial L}{\partial p_j} = (y - \hat{y}) * (-1) * o_j$$ where $$\hat{y} = \sum_i p_i * o_i)$$
+
+We could interpret $$(y - \hat{y}) * (-1) * o_j$$ as the follow
+
+- If $$(y - \hat{y}) < 0$$, it means the model's overall prediction is underestimating
+- In this case, the gating network would be pushed to give the experts whose output is larger to have more weights to boost the overall estimating
+
 
 
 ![moe_structure](/docs/ml_misc/mtl_recsys/images/MoE_structure.png)
