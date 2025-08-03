@@ -66,6 +66,13 @@ We could interpret $$(y - \hat{y}) * (-1) * o_j$$ as the follow
 - If $$(y - \hat{y}) < 0$$, it means the model's overall prediction is underestimating
 - In this case, the gating network would be pushed to give the experts whose output is larger to have more weights to boost the overall estimating
 
+**Comparing linear combination and the gating network**
+- In linear combination, $$p_i$$ is static and the same across all inputs
+- In the gating network, $$p_i$$ is parameterized and different for different input
+- In linear combination, we always use the same combination for all inputs while in the gating network the network choose the experts to handle the input
+
+The above difference is why the gating network could resolve the coupling issue of linear combination.
+
 
 
 ![moe_structure](/docs/ml_misc/mtl_recsys/images/MoE_structure.png)
