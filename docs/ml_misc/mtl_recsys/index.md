@@ -81,3 +81,18 @@ On top of the MoE, MMoE extends the structure to support multi-task learning.
 - If we have two tasks, there would be two gating networks to learn the task specific gating
 - Each task has their own task-specific tower after receive the outputs from the gating network
 - Google reported significant gains from the structure for the YouTube recommendation [[paper]](https://daiwk.github.io/assets/youtube-multitask.pdf)
+
+![mmoe_structure](/docs/ml_misc/mtl_recsys/images/mmoe_structure.png)
+
+Tencent proposed more advanced versions of MMoE.
+
+**Customized Gate Control (CGC)**
+- New idea of having task-specific experts
+- The task-specific knowledge only feed into the corresponding tasks’ gates
+- Each gate output the combination of shared experts and the task experts
+- Mitigate the seesaw phenomenon
+
+**Progressive Layered Extraction (PLE)**
+- Stacking multiple CGC layers
+
+![ple_structure](/docs/ml_misc/mtl_recsys/images/ple_structure.png)
