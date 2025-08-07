@@ -96,3 +96,6 @@ Tencent proposed more advanced versions of MMoE.
 - Stacking multiple CGC layers
 
 ![ple_structure](/docs/ml_misc/mtl_recsys/images/ple_structure.png)
+
+
+An example implementation notebook could be found [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/ml_misc/mtl_implementation.ipynb)
