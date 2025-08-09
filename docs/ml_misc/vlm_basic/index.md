@@ -31,4 +31,29 @@ In this section we would introduce the image encoder used in LLaVA. From the [LL
 
 Our Colab notebook [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/ml_misc/workable_nanoVLM.ipynb).
 
-We use [nanoVLM](https://github.com/huggingface/nanoVLM) for understanding the details of training a VLM. We tweaked the Colab notebook shared by the author to make it runnable with the implementation code when we were studying it.
+We use [nanoVLM](https://github.com/huggingface/nanoVLM) for understanding the details of training a VLM. We tweaked the [Colab notebook](https://colab.research.google.com/github/huggingface/nanoVLM/blob/main/nanoVLM.ipynb) shared by the author to make it runnable with the implementation code when we were studying it.
+
+When we list the elements in a batch data, we see
+
+- input_ids
+- attention_mask
+- images
+- labels
+
+## input_ids
+
+When we print the content of an input_ids sequence, we see the following structure
+```text
+<im_end><im_end>...<im_start>user<row1_col1><image><image>...<row1_col2><image>...<image>Question...<im_end><im_start>assistant Answer: A<im_end><im_start>user...
+```
+
+- It would start with a sequence of `<im_end>`
+- Following `<im_start>user` and a sequence of image related tokens
+- After the image sequence token, it would have the question and following an `<im_end>`
+- Next, start with `<im_start>assistant` and following the corresponding answer and another `<im_end>`
+- The above is one back-and-forth between the user and the assistant. The following `<im_start>` would kick off another back-and-forth between the user and the assistant
+
+![input_ids_example1](/docs/ml_misc/vlm_basic/images/input_ids_example1.png)
+
+
+**Why there are multiple `<im_end>` at the beginning?**
