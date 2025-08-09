@@ -57,3 +57,7 @@ When we print the content of an input_ids sequence, we see the following structu
 
 
 **Why there are multiple `<im_end>` at the beginning?**
+- `<im_end>` is the padding token in this notebook
+- We do the left side padding here
+- However, if we do `print(tokenizer.padding_side)` we would see it's right
+- The reason is we don't use the tokenizer to do the padding. In the codebase we do the padding ourselves [here](https://github.com/allyoushawn/nanoVLM/blob/main/data/collators.py#L52).
