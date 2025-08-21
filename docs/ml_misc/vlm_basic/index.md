@@ -94,3 +94,18 @@ When we print out the attention masks, we would see that only the padding token 
 # Image encoder
 
 In this section we would introduce the image encoder used in LLaVA. From the [LLaVA 1.5 paper](https://arxiv.org/pdf/2310.03744) it's suggesting that it's using the [openai/clip-vit-large-patch14-336](https://huggingface.co/openai/clip-vit-large-patch14-336).
+
+Regarding CLIP, the reference sources are
+- [Blog](https://openai.com/index/clip/)
+- [Paper](https://huggingface.co/papers/2103.00020)
+
+Key description from the paper
+- We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet
+
+The description above indicates that the CLIP embedding is the SOTA image representation at that time and the primary baselines it compared with in the paper is ImageNet.
+
+## Background
+- Previously, the vision models are built based on labeled dataset
+   - VGG, ImageNet
+- It requires specifying visual concept 
+- Directly learning  the image representation from raw text is a promising alternative. It enables zero-shot transferable learning
