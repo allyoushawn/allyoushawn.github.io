@@ -109,3 +109,40 @@ The description above indicates that the CLIP embedding is the SOTA image repres
    - VGG, ImageNet
 - It requires specifying visual concept 
 - Directly learning  the image representation from raw text is a promising alternative. It enables zero-shot transferable learning
+
+## Key results
+- The embedding could perform zero-shot transferable tasks
+- Match the accuracy of ResNet-50 on ImageNet without using their 1.28M training examples
+
+## Components
+
+### Natural language supervision
+- Using natural language as training signal
+    - It’s much easier to scale on the natural language side compared to crowd-source-based for image labeling 
+    - Connects representation to language and enable flexible zero-shot transfer
+
+### Large datasets
+
+- Compose the datasets from the internet 
+- 400M pairs 
+- The dataset is named as WIT for WebImageText 
+- The details of constructing this dataset is missing. [Here](https://github.com/openai/CLIP/issues/254) is the discussion thread and [Meta’s effort](https://arxiv.org/pdf/2309.16671v4) to reproduce how to construct the dataset
+- Blend YFCC100M dataset
+
+### Efficient pre-training
+- Tried using CNN and text-transformer to generate the caption of a given image (Transformer language model)
+    - Generating exact caption is a very hard task
+    - It's not working. On the other hand if we just predict BOW encoding we could speed up reaching the ImageNet performance by 3x
+
+**Projection (alignment)**
+- The paper tried both linear and non-linear projection
+    - No big difference 
+    - Hypothesize here the language model signal is strong enough to guide the projection
+    - Hypothesize non-linear projection is good for image only self supervised representation
+- Other alignment example 
+    - Google [ALIGN](https://arxiv.org/pdf/2102.05918) 
+    - Google Brain [LiT](https://arxiv.org/pdf/2111.07991)
+
+### Model training
+- InfoNCE loss. The loss is symmetric as computed with both image -> text and text -> image
+- The batch size here is 32768
