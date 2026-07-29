@@ -36,7 +36,7 @@ With the above setup, we model that ATE could be decomposed into two elements: A
 - ACME: ACME corresponds to the difference in potential outcomes that would occur if we were to flip the mediator into the value it would take under the treatment status while holding the treatment status itself fixed.
   - Which usually we would model it as $$\mathbb{E}[Y(1, M(1)) - M(1, M(0))]$$
 
-![mediation_modeling_diagram](/docs/uplift_scenario/images/mediation_modeling/mediation_modeling_diagram.png)
+![mediation_modeling_diagram](/docs/uplift_model/uplift_scenario/images/mediation_modeling/mediation_modeling_diagram.png)
 
 # Example
 - Goal: Using the setup above, we want to quantify how much of the supporting tickets reducing could be attributed to that the graphs helps the driver understanding their earnings more
