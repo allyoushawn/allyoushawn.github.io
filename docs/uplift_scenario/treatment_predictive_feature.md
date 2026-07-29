@@ -2,6 +2,7 @@
 title: Treatment predictive features
 layout: default
 parent: Uplift model scenarios
+grand_parent: Uplift Model
 nav_order: 15
 ---
 

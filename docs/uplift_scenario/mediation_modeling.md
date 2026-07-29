@@ -2,6 +2,7 @@
 title: Mediation modeling
 layout: default
 parent: Uplift model scenarios
+grand_parent: Uplift Model
 nav_order: 5
 ---
 Reference: [Mediation Modeling at Uber: Understanding Why Product Changes Work (and Don’t Work)](https://www.uber.com/blog/mediation-modeling/?uclick_id=ab87d21b-5786-4b35-984f-eef020820c8d)
