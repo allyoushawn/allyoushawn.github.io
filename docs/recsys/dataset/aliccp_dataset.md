@@ -18,3 +18,16 @@ Fortunately, [Alibaba](https://www.alibaba.com) has published such dataset: **Al
 
 The data source illustration is as the below screenshot (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408))
 ![Ali-CCP data source illustration](/docs/recsys/dataset/images/aliccp_dataset/aliccp_taoboa_pic.png)
+
+The below is the provided files for downloading and their unzipped file size (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408)) It separates out the features into one file and per-example labels into another file to reduce the storage cost
+![Ali-CCP data structure overview](/docs/recsys/dataset/images/aliccp_dataset/aliccp_data_structure_high_level.png)
+
+
+## Data samples
+
+Conceptually, each sample is composed of the items shown in the following (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408)) :
+![Ali-CCP sample skeleton](/docs/recsys/dataset/images/aliccp_dataset/aliccp_sample_skeleton.png)
+
+* Has two kins of label: click and conversion
+	* Conversion = 1 means click must = 1
+*
