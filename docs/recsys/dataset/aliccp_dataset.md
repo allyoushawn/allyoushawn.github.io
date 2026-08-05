@@ -19,15 +19,67 @@ Fortunately, [Alibaba](https://www.alibaba.com) has published such dataset: **Al
 The data source illustration is as the below screenshot (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408))
 ![Ali-CCP data source illustration](/docs/recsys/dataset/images/aliccp_dataset/aliccp_taoboa_pic.png)
 
-The below is the provided files for downloading and their unzipped file size (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408)) It separates out the features into one file and per-example labels into another file to reduce the storage cost
+The below is the provided files for downloading and their unzipped file size (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408)) It separates out the features into one file (common_features) and per-example labels into another file (sample_skeleton) to reduce the storage cost
 ![Ali-CCP data structure overview](/docs/recsys/dataset/images/aliccp_dataset/aliccp_data_structure_high_level.png)
 
 
-## Data samples
+## Sample skeleton
 
 Conceptually, each sample is composed of the items shown in the following (shared from the Ali-CCP website  [link](https://tianchi.aliyun.com/dataset/408)) :
 ![Ali-CCP sample skeleton](/docs/recsys/dataset/images/aliccp_dataset/aliccp_sample_skeleton.png)
+The sample skeleton dataset has 5 fields, for each sample
+* sample ID: int64
+* labels: two kinds of label, click and conversion
+	* click label: int64
+	* conversion label: int64
+	* Note: Conversion = 1 means click must = 1
+* common feature index: object
+	* This is index that is used to be joined with the provided common_feature dataset
+* feature_num: int64
+	* Stating how many features are packed in `feature_list`
+* feature_list: object
+	* The packed per-impression features which could not be put into the common feature
 
-* Has two kins of label: click and conversion
-	* Conversion = 1 means click must = 1
-*
+
+## Features
+
+The [Ali-CCP dataset documentation](https://tianchi.aliyun.com/dataset/408) defines the following 23 feature field IDs in the Table 2 and we show the Table 2 here for easy reading:
+
+| Feature category | Feature field ID | Description                                              |
+| ---------------- | ---------------- | -------------------------------------------------------- |
+| User             | `101`            | User ID                                                  |
+| User             | `109_14`         | User historical behaviors of category ID and count       |
+| User             | `110_14`         | User historical behaviors of shop ID and count           |
+| User             | `127_14`         | User historical behaviors of brand ID and count          |
+| User             | `150_14`         | User historical behaviors of intention node ID and count |
+| User             | `121`            | Categorical ID of user profile                           |
+| User             | `122`            | Categorical group ID of user profile                     |
+| User             | `124`            | User gender ID                                           |
+| User             | `125`            | User age ID                                              |
+| User             | `126`            | User consumption level, type I                           |
+| User             | `127`            | User consumption level, type II                          |
+| User             | `128`            | Whether the user is employed                             |
+| User             | `129`            | User geographic information                              |
+| Item             | `205`            | Item ID                                                  |
+| Item             | `206`            | Category ID to which the item belongs                    |
+| Item             | `207`            | Shop ID to which the item belongs                        |
+| Item             | `210`            | Intention node ID to which the item belongs              |
+| Item             | `216`            | Item brand ID                                            |
+| Combination      | `508`            | Combination of fields `109_14` and `206`                 |
+| Combination      | `509`            | Combination of fields `110_14` and `207`                 |
+| Combination      | `702`            | Combination of fields `127_14` and `216`                 |
+| Combination      | `853`            | Combination of fields `150_14` and `210`                 |
+| Context          | `301`            | Categorical representation of position                   |
+
+For illustration more clearly, a concrete example is as below (not a real case, only for illustration):
+* Suppose the user recently has engaged with three categories
+	* electronics: 12 times
+	* fashion: 3 times
+	* sports: 1 time
+* In a raw representation would be `109_14\x02electronics\x0312\x01109_14\x02fashion\x033\x01109_14\x02sports\x031
+* It means that:
+	* segment 1
+		* field id: 109_14 (table 2 mapping)
+		* feat: electronics/hashed id (which category exactly)
+		* val: 12 (for this feature, there is an accompanied `val`) and here it means how many times
+	* segment 2 and segment 3 is the same for fashion and sports
