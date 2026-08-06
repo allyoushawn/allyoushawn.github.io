@@ -83,3 +83,15 @@ For illustration more clearly, a concrete example is as below (not a real case, 
 		* feat: electronics/hashed id (which category exactly)
 		* val: 12 (for this feature, there is an accompanied `val`) and here it means how many times
 	* segment 2 and segment 3 is the same for fashion and sports
+
+
+### How features are processed/used
+
+We shared how we built the dataset for our model training [here](https://github.com/allyoushawn/recsys_playground/tree/main/datasets/aliccp) ( it is using the code [here](https://github.com/datawhalechina/torch-rechub/blob/main/examples/ranking/data/ali-ccp/preprocess_ali_ccp.py) and [here](https://github.com/NVIDIA-Merlin/models/blob/stable/merlin/datasets/ecommerce/aliccp/dataset.py) for reference)
+
+From the above table we see that each feature field id would have two fields: `feat` and `val(optional)`.  We would turn that two fields into two features, that is:
+* 109_14: feat
+* D109_14: val
+For the field id without `val` we would just have one field. In other words, we would have the representation of both `electronic` and `12`.
+
+**However currently there is a caveat: for each field id we only keep the latest one for simplicity. In the above example, we only have `109_14: sport, 1` as our model input. This is definitely something should be improved further.**
