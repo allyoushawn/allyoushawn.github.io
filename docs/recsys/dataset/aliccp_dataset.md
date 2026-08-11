@@ -95,3 +95,10 @@ From the above table we see that each feature field id would have two fields: `f
 For the field id without `val` we would just have one field. In other words, we would have the representation of both `electronic` and `12`.
 
 **However currently there is a caveat: for each field id we only keep the latest one for simplicity. In the above example, we only have `109_14: sport, 1` as our model input. This is definitely something should be improved further.**
+
+## Common features
+In the processing code we do the following:
+1. We first load the common features as a bag of dictionary with the common feature key as the dict key
+2. We load the samples, prepare a dictionary **F** holding all the features listed in the skeleton dataset
+3. We fetch the common features out from common feature dictionary and merge it into **F**
+4. We do the above processing on top of the merged features for this instance
