@@ -1,8 +1,8 @@
 ---
 title: Multi-task learning for RecSys
 layout: default
-parent: ML Misc.
-nav_order: 30
+parent: RecSys
+nav_order: 2
 ---
 
 The article is based on the following source:
@@ -34,13 +34,13 @@ Nowadays, an industry-level recommendation system (RecSys) often uses a MLT mode
 - Seesaw effect issue
     - Improve one task and hurt others
 
-![shared_bottom_mtl](/docs/ml_misc/mtl_recsys/images/shared_bottom_mtl.png)
+![shared_bottom_mtl](/docs/recsys/mtl_recsys/images/shared_bottom_mtl.png)
 
 A simple way to combat the conflicted targets is to separate the whole shared encoder into several encoders, and attach linear combination layers to allow flexible parameter sharing (see the graph below.) In other words, if the tasks are conflicted and the optimal choice is not to share parameters at all, the linear combination weights would become a one-hot vector.
 
 However, people find the improvements are very limited.
 
-![cross_stitch_mtl](/docs/ml_misc/mtl_recsys/images/cross_stitch_mtl.png)
+![cross_stitch_mtl](/docs/recsys/mtl_recsys/images/cross_stitch_mtl.png)
 
 
 # Gating structure
@@ -75,14 +75,14 @@ The above difference is why the gating network could resolve the coupling issue 
 
 
 
-![moe_structure](/docs/ml_misc/mtl_recsys/images/MoE_structure.png)
+![moe_structure](/docs/recsys/mtl_recsys/images/MoE_structure.png)
 
 On top of the MoE, MMoE extends the structure to support multi-task learning.
 - If we have two tasks, there would be two gating networks to learn the task specific gating
 - Each task has their own task-specific tower after receive the outputs from the gating network
 - Google reported significant gains from the structure for the YouTube recommendation [[paper]](https://daiwk.github.io/assets/youtube-multitask.pdf)
 
-![mmoe_structure](/docs/ml_misc/mtl_recsys/images/mmoe_structure.png)
+![mmoe_structure](/docs/recsys/mtl_recsys/images/mmoe_structure.png)
 
 Tencent proposed more advanced versions of MMoE.
 
@@ -95,7 +95,7 @@ Tencent proposed more advanced versions of MMoE.
 **Progressive Layered Extraction (PLE)**
 - Stacking multiple CGC layers
 
-![ple_structure](/docs/ml_misc/mtl_recsys/images/ple_structure.png)
+![ple_structure](/docs/recsys/mtl_recsys/images/ple_structure.png)
 
 
 An example implementation notebook could be found [here](https://github.com/allyoushawn/jupyter_notebook_projects/blob/main/ml_misc/mtl_implementation.ipynb)
