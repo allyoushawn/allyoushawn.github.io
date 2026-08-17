@@ -1,6 +1,7 @@
 ---
 title: Multi-task learning for RecSys
 layout: default
+has_children: true
 parent: RecSys
 nav_order: 2
 ---
