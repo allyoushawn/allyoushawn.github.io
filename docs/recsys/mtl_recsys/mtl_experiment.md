@@ -29,6 +29,14 @@ The Ali-CCP dataset would be first processed by the processing code [here](https
 	5. The output is `preprocessed_{train, test}.parquet` along with `vocab` which has 23 entries for each field id in the form like `vocab["109_14"] = {"sport": 1, "electronics": 2, ...}`
 		1. The `feat`  in the `preprocessed_{train, test}.parquet` is still raw string at the step
 4. [encode.py](https://github.com/allyoushawn/recsys_playground/blob/main/datasets/aliccp/encode.py)
+	1. **This part is loaded every time the training is started**. It is the doing the tensorizing
+	2. For sparse columns, it would map the string value to an embedding index through vocabulary
+	3. For dense value, map it to float32
+	4. In the experiments, we have 23 sparse fields and 8 dense fields
+	5. For label, map it to float32
+
+
+# Models
 
 
 
