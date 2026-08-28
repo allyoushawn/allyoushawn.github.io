@@ -38,5 +38,15 @@ The Ali-CCP dataset would be first processed by the processing code [here](https
 
 # Models
 
+On the modeling side, we want to know what gains could the MTL architectures brings compared to those classic RecSys models. The experiments are designed as keeping the model architecture the only variable, other setups are the same. For the classic RecSys models, we do some tweaking to make it able to be used in the same training setup
+
+The involved models are
+1. [Wide&Deep](https://arxiv.org/abs/1606.07792)
+2. [Deep](https://arxiv.org/abs/1703.04247)
+3. [DCNv2](https://arxiv.org/abs/2008.13535)
+4. [Shared bottom](https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/)
+5. [MMoE](https://github.com/guyulongcs/Deep-Learning-for-Search-Recommendation-Advertisements/blob/master/04_Ranking/Multi-task/2018%20%28Google%29%20%28KDD%29%20%2A%2A%20%5BMMoE%5D%20Modeling%20task%20relationships%20in%20multi-task%20learning%20with%20multi-gate%20mixture-of-experts.pdf)
+6. [PLE](https://github.com/guyulongcs/Deep-Learning-for-Search-Recommendation-Advertisements/blob/master/04_Ranking/Multi-task/2020%20%28Tencent%29%20%28Recsys%29%20%2A%2A%20%20%5BPLE%5D%20Progressive%20Layered%20Extraction%20%28PLE%29%20-%20A%20Novel%20Multi-Task%20Learning%20%28MTL%29%20Model%20for%20Personalized%20Recommendations.pdf)
 
 
+![Swappable backbone architecture](/docs/recsys/mtl_recsys/images/swappable_backbone.png)
