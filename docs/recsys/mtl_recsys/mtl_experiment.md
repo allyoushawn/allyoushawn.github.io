@@ -42,7 +42,13 @@ On the modeling side, we want to know what gains could the MTL architectures bri
 
 The involved models are
 1. [Wide&Deep](https://arxiv.org/abs/1606.07792)
-2. [Deep](https://arxiv.org/abs/1703.04247)
+	1. Deep module has two heads, one is deep_ctr and the other is deep_cvr
+	2. For the wide module, we have one wide module for ctr and another for cvr (wide_ctr, wide_cvr)
+	3. logit_ctr = wide_ctr + deep_ctr; logit_cvr = wide_cvr + deep_cvr
+	4. p_ctcvr = sigmoid(logit_ctr) * sigmoid(logit_cvr)
+	5. Implementation [here](https://github.com/allyoushawn/recsys_playground/blob/main/experiments/20260717_aliccp_mtl_experiments/single_task_models.py#L96-L103)
+	6. **Caveat**: Here the wide implementation does not use the cross operation which could have impacts on the performance. Also how to combine the deep scores and the wide scores should be more sophisticated. This is a follow up experiment
+2. [DeepFM](https://arxiv.org/abs/1703.04247)
 3. [DCNv2](https://arxiv.org/abs/2008.13535)
 4. [Shared bottom](https://blog.reachsumit.com/posts/2024/06/multi-task-video-recsys-p1/)
 5. [MMoE](https://github.com/guyulongcs/Deep-Learning-for-Search-Recommendation-Advertisements/blob/master/04_Ranking/Multi-task/2018%20%28Google%29%20%28KDD%29%20%2A%2A%20%5BMMoE%5D%20Modeling%20task%20relationships%20in%20multi-task%20learning%20with%20multi-gate%20mixture-of-experts.pdf)
